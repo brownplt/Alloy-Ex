@@ -1,7 +1,3 @@
-//notes: users will need knownData and createdData
-//will then need to exist in time, add uName
-//need transistion: createData
-
 sig State {
 	sUsers: set User,
 	repos: set Repo,
@@ -341,5 +337,10 @@ assert grantRemoveAccessInverses {
 		removeAccess[s',s,o,u,r',r]
 	}
 }
+
+assert learningDataRequiresReadAccess {
+	//
+}
+
 run combo for 5 but 10 Action
 //check grantRemoveAccessInverses for 6
