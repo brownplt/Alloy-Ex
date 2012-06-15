@@ -102,7 +102,7 @@ sig StateOfBrowsers {
 	//Discoverability: Page -> Page -> one Bool
 }
 abstract sig Page { }
-one sig MainPage extends Page { }
+one sig LoggedInMainPage extends Page { }
 sig MyReposPage extends Page {
 	 myRepos: set Repo
 }
@@ -110,17 +110,40 @@ sig RepoPage extends Page {
 	repo: one Repo
 }
 
-pred MainPageLink[ss,ss':StateOfServer, p':Page] {
-	p' in MainPage
+/////////////////////////////////
+----------------------------
+/////////////////////////////////
+sig CreateRepoPage extends Page {
+	
+}
+
+sig PermissionsErrorPage extends Page {
+
+}
+
+sig NotFoundErrorPage extends Page {
+
+}
+
+sig OtherErrorPage extends Page {
+
+}
+
+/////////////////////////////////
+----------------------------
+/////////////////////////////////
+
+pred LoggedInMainPageLink[ss,ss':StateOfServer, p':Page] {
+	p' in LoggedInMainPage
 	NoOp[ss,ss']
 }
 
 pred RepoPageLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c:Cookie] {
 	NoOp[ss,ss']
 	let u = ss.Identification[c] {
-		p in MainPage or (p in MyReposPage and u in ss.Ownership[r])
+		p in LoggedInMainPage or (p in MyReposPage and u in ss.Ownership[r])
 		(u in ss.Membership[r] and p in RepoPage and p.repo = r) or
-		!(u in ss.Membership[r]) and p in MainPage //FIXME: should go to error page
+		!(u in ss.Membership[r]) and p in LoggedInMainPage //FIXME: should go to permissions error page
 	}
 }
 
@@ -134,7 +157,7 @@ pred ServerRequest[s,s':State] {
 		s.browser.CurrentBrowserPages - (b->p) + (b->p') = s'.browser.CurrentBrowserPages
 		p in s.browser.CurrentBrowserPages[b]
 		!(p' in s.browser.CurrentBrowserPages[b])
-		MainPageLink[s.server, s'.server, p']
+		LoggedInMainPageLink[s.server, s'.server, p']
 	}
 }
 
@@ -150,6 +173,45 @@ fact {
 		s in s'.*nextState or s' in s.*nextState
 	}
 }
+
+
+
+------------------------------
+///////////////////////////////////
+------------------------------
+
+// Match the most comfortable way to do tasls with the least granting of authority
+pred LeastAuthority {
+
+}
+
+// Grant authorities to others in accordance with user actions granting consent
+pred GrantingWithUserActions[s,s': StateOfServer, u: UserAccount] {
+
+}
+
+// Offer the user ways to reduce others' authority to access the user's resources 
+pred ReducingAuthority {
+
+}
+
+// Maintain accurate awareness of the user's own ability to access resources
+pred AwarenessOfOwnAuthority {
+
+}
+
+
+
+
+
+------------------------------
+///////////////////////////////////
+------------------------------
+
+
+
+
+
 
 run RepoPageLink for 3
 //run GrantAccess for 3 but 0 StateOfBrowsers, 0 Browser, 0 State, 0 Page //0 UserAction
