@@ -174,9 +174,6 @@ pred RepoPageOK[s:StateOfServer, p:Page, r:Repo] {
 	r in s.repos
 }
 
-/////////////////////////////////
-----------------------------
-/////////////////////////////////
 abstract sig CreateRepoPage extends Page { }
 sig CreateRepoPageVN, CreateRepoPageIN, CreateRepoPageNN extends CreateRepoPage { }//valid name, invalid name, no name
 pred CreateRepoPageVNOK[s:StateOfServer,p:Page] {
@@ -194,6 +191,17 @@ pred LoginPageOK[s:StateOfServer, p:Page] {
 	p in LoginPage
 }
 
+
+/////////////////////////////////
+----------------------------
+/////////////////////////////////
+
+/*sig LoginWithErrorPage extends Page { }
+pred LoginWithErrorPageOK[s:StateOfServer, p:Page] {
+	p in LoginPage
+}*/
+
+
 sig NotFoundErrorPage extends Page { }
 
 sig OtherErrorPage extends Page { }
@@ -201,6 +209,7 @@ sig OtherErrorPage extends Page { }
 /////////////////////////////////
 ----------------------------
 /////////////////////////////////
+
 
 pred LoginLink[ss,ss':StateOfServer, p,p':Page, c,c':Cookie] {
 	p in LoginPage
@@ -220,7 +229,7 @@ pred LoginLink[ss,ss':StateOfServer, p,p':Page, c,c':Cookie] {
 			({
 				c=c'
 				NoOp[ss,ss']
-				p' in LoginPage
+				p' in LoginPage //LoginErrorPage
 			})
 		}
 	}
@@ -355,7 +364,7 @@ pred Combo {
 		LoginLink[s.server,s'.server,p,p',c,c']
 		StateTransition[s,s']
 	}
-	some s,s':State, p,p':Page, c:Cookie,c':/*lone*/ Cookie {
+	some s,s':State, p,p':Page, c:Cookie, c':lone Cookie {
 		p in s.browser.pages
 		p' in s'.browser.pages
 		some b:Browser {
