@@ -14,7 +14,7 @@ sig StateOfServer {
 	usernames: set UserName,
 	passwords: set Password,
 	Identification: cookies -> lone users,
-	Authentication: usernames -> one passwords -> one users,
+	Authentication: usernames -> passwords -> lone users,
 	Membership: repos -> set users,
 	Ownership: repos -> one users,
 	nextStates: set StateOfServer 
@@ -29,18 +29,29 @@ fact {
 	all s: StateOfServer, r: s.repos, u: s.users | s.Ownership[r] = u implies u in s.Membership[r]
 	all s: StateOfServer, r: s.repos | s.Ownership[r] in s.users and s.Membership[r] in s.users
 	all s,s':StateOfServer {
-		s' in s.nextStates iff Transition[s,s']}
+		s' in s.nextStates iff Transition[s,s']
+	}
 	all s,s':StateOfServer {
 		s' in s.*nextStates or s in s'.*nextStates
+
 		(s.Identification = s'.Identification and
 		s.Authentication = s'.Authentication and
 		s.Membership = s'.Membership and
-		s.Ownership = s'.Ownership) => s=s'}
+		s.Ownership = s'.Ownership and
+		s.cookies = s'.cookies) => s=s'
+	}
 	all s:StateOfServer, u: s.users {
-		some c:Cookie | s.Identification[c] = u
+		//some c:Cookie | s.Identification[c] = u
 		some n:UserName, p:Password | s.Authentication[n][p] = u
 	}
-	all s:StateOfServer, c,c':Cookie | s.Identification[c] = s.Identification[c'] implies c=c'
+	all s:StateOfServer, p,p':Password, un,un':UserName {
+		s.Authentication[un][p] = s.Authentication[un'][p'] => ((un = un' and p = p') or s.Authentication[un][p] = none)
+		s.Authentication[un][p] != s.Authentication[un'][p'] => 
+		(un != un' or
+		s.Authentication[un][p] = none or
+		s.Authentication[un'][p'] = none)
+	}
+	//all s:StateOfServer, c,c':Cookie | s.Identification[c] = s.Identification[c'] implies c=c'
 }
 
 pred Transition[s,s':StateOfServer] {
@@ -148,6 +159,9 @@ fact {
 	all s:StateOfBrowsers, p:s.pages, b,b':s.browsers {
 		p in s.CurrentBrowserPages[b] and p in s.CurrentBrowserPages[b'] => b = b'
 	}
+	all s:StateOfBrowsers, b,b':s.browsers {
+		s.CurrentBrowserCookie[b] = s.CurrentBrowserCookie[b'] => (b = b' or s.CurrentBrowserCookie[b] = none)
+	}
 }
 
 abstract sig Page { }
@@ -226,13 +240,13 @@ pred LoginLink[ss,ss':StateOfServer, p,p':Page, c,c':Cookie] {
 	}
 }
 
-pred LogoutLink[ss,ss':StateOfServer, p':Page, c,c':Cookie] {
+pred LogoutLink[ss,ss':StateOfServer, p':Page, c,c':lone Cookie] {
 	p' in LoginPage
 	c' = none
 	Logout[ss,ss',c]
 }
 
-pred CreateRepoPageNNLink[ss,ss':StateOfServer, p,p':Page, c,c':Cookie] {
+pred CreateRepoPageNNLink[ss,ss':StateOfServer, p,p':Page, c,c':lone Cookie] {
 	NoOp[ss,ss']
 	CreateRepoPageNNOK[ss',p']
 	p in MyReposPage + LoggedInMainPage
@@ -240,7 +254,7 @@ pred CreateRepoPageNNLink[ss,ss':StateOfServer, p,p':Page, c,c':Cookie] {
 	c = c'
 }
 
-pred CreateRepoPageNameLink[ss,ss':StateOfServer, p,p':Page, c,c':Cookie] {
+pred CreateRepoPageNameLink[ss,ss':StateOfServer, p,p':Page, c,c':lone Cookie] {
 	NoOp[ss,ss']
 	CreateRepoPageINOK[ss',p'] or CreateRepoPageVNOK[ss',p']
 	p in CreateRepoPage
@@ -249,7 +263,7 @@ pred CreateRepoPageNameLink[ss,ss':StateOfServer, p,p':Page, c,c':Cookie] {
 }
 
 //goes to repo page and creates a new repo
-pred CreateRepoSuccessLink[ss,ss':StateOfServer, p,p':Page, c,c':Cookie] {
+pred CreateRepoSuccessLink[ss,ss':StateOfServer, p,p':Page, c,c':lone Cookie] {
 	some r:Repo {
 		let u = ss.Identification[c] {
 			CreateRepo[ss,ss',u,r]
@@ -260,21 +274,21 @@ pred CreateRepoSuccessLink[ss,ss':StateOfServer, p,p':Page, c,c':Cookie] {
 	c = c'
 }
 
-pred LoggedInMainPageLink[ss,ss':StateOfServer, p':Page, c,c':Cookie] {
+pred LoggedInMainPageLink[ss,ss':StateOfServer, p':Page, c,c':lone Cookie] {
 	LoggedInMainPageOK[ss',p']
 	NoOp[ss,ss']
 	ss.Identification[c] != none
 	c = c'
 }
 
-pred MyReposPageLink[ss,ss':StateOfServer, p':Page, c,c':Cookie] {
+pred MyReposPageLink[ss,ss':StateOfServer, p':Page, c,c':lone Cookie] {
 	NoOp[ss,ss']
 	c=c'
 	MyReposPageOK[ss',p',c]
 	ss.Identification[c] != none
 }
 
-pred RepoPageLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':Cookie] {
+pred RepoPageLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':lone Cookie] {
 	NoOp[ss,ss']
 	let u = ss.Identification[c] {
 		p in LoggedInMainPage or (p in MyReposPage and r in p.myRepos)
@@ -367,6 +381,7 @@ pred AwarenessOfOwnAuthority {
 
 
 pred Combo {
+	some p,p':Password | p != p'
 	/*some s,s':State, p:Page, p':RepoPage, r:Repo, c,c':Cookie {
 		p in s.browser.pages
 		p' in s'.browser.pages
@@ -392,7 +407,7 @@ pred Combo {
 		LoginLink[s.server,s'.server,p,p',c,c']
 		StateTransition[s,s']
 	}
-	some s,s':State, p,p':Page, c:Cookie,c':/*lone*/ Cookie {
+	/*some s,s':State, p,p':Page, c:Cookie,c':lone Cookie {
 		p in s.browser.pages
 		p' in s'.browser.pages
 		some b:Browser {
@@ -400,7 +415,7 @@ pred Combo {
 		}
 		LogoutLink[s.server,s'.server,p',c,c']
 		StateTransition[s,s']
-	}
+	}*/
 
 /*
 	some s,s':State, p,p':Page, c,c':Cookie {
