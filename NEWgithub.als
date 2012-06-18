@@ -182,7 +182,7 @@ fact {
 
 // Match the most comfortable way to do tasls with the least granting of authority
 pred LeastAuthority {
-
+	
 }
 
 // Grant authorities to others in accordance with user actions granting consent
@@ -191,7 +191,7 @@ pred GrantingWithUserActions[s,s': StateOfServer, u: UserAccount] {
 }
 
 // Offer the user ways to reduce others' authority to access the user's resources 
-pred ReducingAuthority {
+pred ReducingAuthority[s, s': StateOfServer, o, u: UserAccount, r: Repo] {
 
 }
 
@@ -213,6 +213,6 @@ pred AwarenessOfOwnAuthority {
 
 
 
-run RepoPageLink for 3
+run ReducingAuthority for 3
 //run GrantAccess for 3 but 0 StateOfBrowsers, 0 Browser, 0 State, 0 Page //0 UserAction
 //run { #DifficultyAssignment=2}
