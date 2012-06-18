@@ -96,23 +96,23 @@ pred DeleteRepo[s,s':StateOfServer, u:UserAccount, r:Repo] {
 	s.cookies = s'.cookies
 }
 
-pred GrantAccess[s,s':StateOfServer, u,u':UserAccount, r:Repo] {
+pred GrantAccess[s,s':StateOfServer, o,u:UserAccount, r:Repo] {
 	s.Identification = s'.Identification
 	s.Authentication = s'.Authentication
 	s.Ownership = s'.Ownership
-	s.Ownership[r] = u
-	s'.Membership = s.Membership + (r -> u')
-	!(u' in s.Membership[r])
+	s.Ownership[r] = o
+	s'.Membership = s.Membership + (r -> u)
+	!(u in s.Membership[r])
 	s.cookies = s'.cookies
 }
 
-pred RevokeAccess[s,s':StateOfServer, u,u':UserAccount, r:Repo] {
+pred RevokeAccess[s,s':StateOfServer, o,u:UserAccount, r:Repo] {
 	s.Identification = s'.Identification
 	s.Authentication = s'.Authentication
 	s.Ownership = s'.Ownership
-	s.Ownership[r] = u
-	s.Membership = s'.Membership + (r -> u')
-	!(u' in s'.Membership[r])
+	s.Ownership[r] = o
+	s.Membership = s'.Membership + (r -> u)
+	!(u in s'.Membership[r])
 	s.cookies = s'.cookies
 }
 
@@ -179,14 +179,6 @@ pred MyReposPageOK[s:StateOfServer, p:Page, c:Cookie] {
 		all r:Repo | r in p.myRepos <=> u in s.Membership[r]
 	}
 }
-sig RepoPage extends Page {
-	repo: one Repo
-}
-pred RepoPageOK[s:StateOfServer, p:Page, r:Repo] {
-	p in RepoPage
-	p.repo = r
-	r in s.repos
-}
 
 abstract sig CreateRepoPage extends Page { }
 sig CreateRepoPageVN, CreateRepoPageIN, CreateRepoPageNN extends CreateRepoPage { }//valid name, invalid name, no name
@@ -205,6 +197,28 @@ pred LoginPageOK[s:StateOfServer, p:Page] {
 	p in LoginPage
 }
 
+abstract sig RepoPage extends Page {
+	repo: one Repo
+}
+pred RepoPageOK[s:StateOfServer, p:Page, r:Repo] {
+	p in RepoPage
+	p.repo = r
+	r in s.repos
+}
+
+sig RepoOwnerPage extends RepoPage { }
+sig RepoMemberPage extends RepoPage { }
+
+sig CollaboratorPage extends Page {
+	cRepo: one Repo,
+	collaborators: set UserAccount
+}
+pred CollaboratorPageOK[s:StateOfServer, p:Page, r:Repo] {
+	p in CollaboratorPage
+	p.cRepo = r
+	p.cRepo in s.repos
+	p.collaborators = s.Membership[r]
+}
 
 /////////////////////////////////
 ----------------------------
@@ -301,12 +315,54 @@ pred RepoPageLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':lone Cookie] {
 	NoOp[ss,ss']
 	let u = ss.Identification[c] {
 		p in LoggedInMainPage or (p in MyReposPage and r in p.myRepos)
-		(u != none and
-		u in ss.Membership[p'.repo] and
-		RepoPageOK[ss',p',r]) or
+		({
+			u != none
+			RepoPageOK[ss',p',r]
+			(u in ss.Ownership[p'.repo] and p' in RepoOwnerPage) or
+			(u in ss.Membership[p'.repo] and !(u in ss.Ownership[p'.repo]) and p' in RepoMemberPage)
+		}) or
 		!(u in ss.Membership[r]) and LoggedInMainPageOK[ss',p'] //FIXME: should go to permissions error page
 	}
 	c = c'
+}
+
+pred CollaboratorLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':lone Cookie] {
+	NoOp[ss,ss']
+	p in RepoOwnerPage
+	p.repo = r
+	CollaboratorPageOK[ss',p',r]
+	c = c'
+	ss.Identification[c] != none
+	ss.Identification[c] in ss.Ownership[r]
+}
+
+pred AddCollaboratorLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':lone Cookie] {
+	p in CollaboratorPage
+	p.cRepo = r
+	CollaboratorPageOK[ss',p',r]
+	c = c'
+	some u:UserAccount {
+		!(u in ss.Membership[r])
+		GrantAccess[ss,ss',ss.Identification[c],u,r]
+	}
+}
+
+pred RemoveCollaboratorLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':lone Cookie] {
+	p in CollaboratorPage
+	p.cRepo = r
+	CollaboratorPageOK[ss',p',r]
+	c = c'
+	some u:p.collaborators {
+		RevokeAccess[ss,ss',ss.Identification[c],u,r]
+	}
+}
+
+pred DeleteRepoLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':lone Cookie] {
+	p in RepoOwnerPage
+	p.repo = r
+	MyReposPageOK[ss',p',c]
+	c = c'
+	DeleteRepo[ss,ss',ss.Identification[c],r]
 }
 
 pred StateTransition[s,s':State] {
@@ -331,7 +387,11 @@ pred ServerRequest[s,s':State,p,p':Page,b:Browser] {
 		LoginLink[s.server, s'.server, p,p',c,c'] or
 		LogoutLink[s.server, s'.server, p', c,c'] or
 		(some r:Repo {
-			RepoPageLink[s.server, s'.server, p, p', r, c, c']
+			RepoPageLink[s.server, s'.server, p, p', r, c, c'] or
+			CollaboratorLink[s.server, s'.server, p, p', r, c, c'] or
+			AddCollaboratorLink[s.server, s'.server, p, p', r, c, c'] or
+			RemoveCollaboratorLink[s.server, s'.server, p, p', r, c, c'] or
+			DeleteRepoLink[s.server, s'.server, p,p', r, c, c']
 		})
 	}
 }
@@ -353,14 +413,38 @@ fact {
 }
 
 pred Combo {
-	some p,p':Password | p != p'
+	//some p,p':Password | p != p'
+	/*some s,s':State, p,p':Page, r:Repo, c,c':Cookie {
+		p in s.browser.pages
+		p' in s'.browser.pages
+		CollaboratorLink[s.server,s'.server,p,p',r,c,c']
+		StateTransition[s,s']
+	}
+	some s,s':State, p,p':Page, r:Repo, c,c':Cookie {
+		p in s.browser.pages
+		p' in s'.browser.pages
+		AddCollaboratorLink[s.server,s'.server,p,p',r,c,c']
+		StateTransition[s,s']
+	}
+	some s,s':State, p,p':Page, r:Repo, c,c':Cookie {
+		p in s.browser.pages
+		p' in s'.browser.pages
+		RemoveCollaboratorLink[s.server,s'.server,p,p',r,c,c']
+		StateTransition[s,s']
+	}*/
+	some s,s':State, p,p':Page, r:Repo, c,c':Cookie {
+		p in s.browser.pages
+		p' in s'.browser.pages
+		DeleteRepoLink[s.server,s'.server,p,p',r,c,c']
+		StateTransition[s,s']
+	}
 	/*some s,s':State, p:Page, p':RepoPage, r:Repo, c,c':Cookie {
 		p in s.browser.pages
 		p' in s'.browser.pages
 		RepoPageLink[s.server,s'.server,p,p',r,c,c']
 		StateTransition[s,s']
-	}
-	some s,s':State, p,p':Page, c,c':Cookie {
+	}*/
+	/*some s,s':State, p,p':Page, c,c':Cookie {
 		p in s.browser.pages
 		p' in s'.browser.pages
 		some b:Browser {
@@ -370,7 +454,7 @@ pred Combo {
 		StateTransition[s,s']
 	}*/
 
-	some s,s':State, p:Page, p':Page, c,c':Cookie {
+	/*some s,s':State, p:Page, p':Page, c,c':Cookie {
 		p in s.browser.pages
 		p' in s'.browser.pages
 		some b:Browser {
@@ -378,7 +462,7 @@ pred Combo {
 		}
 		LoginLink[s.server,s'.server,p,p',c,c']
 		StateTransition[s,s']
-	}
+	}*/
 	/*some s,s':State, p,p':Page, c:Cookie,c':lone Cookie {
 		p in s.browser.pages
 		p' in s'.browser.pages
