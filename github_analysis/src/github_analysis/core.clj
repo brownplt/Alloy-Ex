@@ -54,9 +54,18 @@
       ["LoggedInMainPage" "RepoMemberPage"] 8})
 
 (defn difficulty? [p1 p2]
-  (difficulties [(object-type p1)
-                 (object-type p2)]
-                -1))
+  (let [t1 (object-type p1)
+        t2 (object-type p2)]
+    (case t1
+      "LoggedInMainPage" ({"LoginPage" 4} t1 1)
+      "MyReposPage" ({"RepoOwnerPage" 8} t1 1)
+      "CreateRepoPageNN" 2
+      "CreateRepoPageIN" 4
+      "CreateRepoPageVN" 3
+      "LoginPage" 2
+      "RepoOwnerPage" 3
+      "RepoMemberPage" 3
+      "CollaboratorPage" ({"CollaboratorPage" 6} t1 3)))
 
 (def discoverabilities
      #{["LoggedInMainPage" "MyReposPage"]
