@@ -319,10 +319,9 @@ pred MyReposPageLink[ss,ss':StateOfServer, p':Page, c,c':lone Cookie, t: Type] {
 }
 
 pred RepoPageLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':lone Cookie, t: Type] {
-	t = RepoPageType
 	NoOp[ss,ss']
 	let u = ss.Identification[c] {
-		p in LoggedInMainPage or (p in MyReposPage and r in p.myRepos)
+		(p in LoggedInMainPage and t = ClickRepoPageType) or (p in MyReposPage and r in p.myRepos and t = SearchRepoPageType)
 		({
 			u != none
 			RepoPageOK[ss',p',r]
@@ -411,8 +410,8 @@ pred ServerRequest[s,s':State,p,p':Page,b:Browser,t:Type] {
 abstract sig Type { } 
 one sig LoggedInMainPageType, CreateRepoSuccessType, CreateRepoPageNNType,
 		MyReposPageType, CreateRepoPageNameType, LoginType, LogoutType, 
-		RepoPageType, CollaboratorType, AddCollaboratorType, RemoveCollaboratorType, 
-		DeleteRepoType extends Type { }
+		ClickRepoPageType, SearchRepoPageType, CollaboratorType, AddCollaboratorType,
+		RemoveCollaboratorType, DeleteRepoType extends Type { }
 
 sig State {
 	browser: one StateOfBrowsers,
