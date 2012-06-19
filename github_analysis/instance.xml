@@ -1,6 +1,6 @@
-<alloy builddate="2011-11-25 14:04 EST">
+<alloy builddate="2012-02-28 12:29 EST">
 
-<instance bitwidth="0" maxseq="0" command="Run Combo for 5" filename="/Users/wzimrin/Programs/summer2012/Alloy-Ex/NEWgithub.als">
+<instance bitwidth="0" maxseq="0" command="Run Combo for 5" filename="/Users/delavaquay/Desktop/Research/Alloy/Alloy-Ex/NEWgithub.als">
 
 <sig label="seq/Int" ID="0" parentID="1" builtin="yes">
 </sig>
@@ -13,21 +13,17 @@
 
 <sig label="this/Repo" ID="4" parentID="2">
    <atom label="Repo$0"/>
-   <atom label="Repo$1"/>
-   <atom label="Repo$2"/>
-   <atom label="Repo$3"/>
-   <atom label="Repo$4"/>
 </sig>
 
 <sig label="this/UserAccount" ID="5" parentID="2">
    <atom label="UserAccount$0"/>
    <atom label="UserAccount$1"/>
+   <atom label="UserAccount$2"/>
 </sig>
 
 <sig label="this/UserName" ID="6" parentID="2">
    <atom label="UserName$0"/>
    <atom label="UserName$1"/>
-   <atom label="UserName$2"/>
 </sig>
 
 <sig label="this/Password" ID="7" parentID="2">
@@ -42,22 +38,14 @@
 
 <field label="repos" ID="9" parentID="8">
    <tuple> <atom label="StateOfServer$0"/> <atom label="Repo$0"/> </tuple>
-   <tuple> <atom label="StateOfServer$0"/> <atom label="Repo$1"/> </tuple>
-   <tuple> <atom label="StateOfServer$0"/> <atom label="Repo$2"/> </tuple>
-   <tuple> <atom label="StateOfServer$0"/> <atom label="Repo$3"/> </tuple>
-   <tuple> <atom label="StateOfServer$0"/> <atom label="Repo$4"/> </tuple>
-   <tuple> <atom label="StateOfServer$1"/> <atom label="Repo$0"/> </tuple>
-   <tuple> <atom label="StateOfServer$1"/> <atom label="Repo$1"/> </tuple>
-   <tuple> <atom label="StateOfServer$1"/> <atom label="Repo$2"/> </tuple>
-   <tuple> <atom label="StateOfServer$1"/> <atom label="Repo$3"/> </tuple>
    <types> <type ID="8"/> <type ID="4"/> </types>
 </field>
 
 <field label="users" ID="10" parentID="8">
    <tuple> <atom label="StateOfServer$0"/> <atom label="UserAccount$0"/> </tuple>
-   <tuple> <atom label="StateOfServer$0"/> <atom label="UserAccount$1"/> </tuple>
+   <tuple> <atom label="StateOfServer$0"/> <atom label="UserAccount$2"/> </tuple>
    <tuple> <atom label="StateOfServer$1"/> <atom label="UserAccount$0"/> </tuple>
-   <tuple> <atom label="StateOfServer$1"/> <atom label="UserAccount$1"/> </tuple>
+   <tuple> <atom label="StateOfServer$1"/> <atom label="UserAccount$2"/> </tuple>
    <types> <type ID="8"/> <type ID="5"/> </types>
 </field>
 
@@ -70,58 +58,42 @@
 </field>
 
 <field label="usernames" ID="13" parentID="8">
+   <tuple> <atom label="StateOfServer$0"/> <atom label="UserName$0"/> </tuple>
    <tuple> <atom label="StateOfServer$0"/> <atom label="UserName$1"/> </tuple>
-   <tuple> <atom label="StateOfServer$0"/> <atom label="UserName$2"/> </tuple>
+   <tuple> <atom label="StateOfServer$1"/> <atom label="UserName$0"/> </tuple>
    <tuple> <atom label="StateOfServer$1"/> <atom label="UserName$1"/> </tuple>
-   <tuple> <atom label="StateOfServer$1"/> <atom label="UserName$2"/> </tuple>
    <types> <type ID="8"/> <type ID="6"/> </types>
 </field>
 
 <field label="passwords" ID="14" parentID="8">
+   <tuple> <atom label="StateOfServer$0"/> <atom label="Password$0"/> </tuple>
    <tuple> <atom label="StateOfServer$0"/> <atom label="Password$1"/> </tuple>
+   <tuple> <atom label="StateOfServer$1"/> <atom label="Password$0"/> </tuple>
    <tuple> <atom label="StateOfServer$1"/> <atom label="Password$1"/> </tuple>
    <types> <type ID="8"/> <type ID="7"/> </types>
 </field>
 
 <field label="Identification" ID="15" parentID="8">
-   <tuple> <atom label="StateOfServer$0"/> <atom label="Cookie$1"/> <atom label="UserAccount$1"/> </tuple>
-   <tuple> <atom label="StateOfServer$0"/> <atom label="Cookie$2"/> <atom label="UserAccount$1"/> </tuple>
-   <tuple> <atom label="StateOfServer$1"/> <atom label="Cookie$1"/> <atom label="UserAccount$1"/> </tuple>
-   <tuple> <atom label="StateOfServer$1"/> <atom label="Cookie$2"/> <atom label="UserAccount$1"/> </tuple>
+   <tuple> <atom label="StateOfServer$0"/> <atom label="Cookie$2"/> <atom label="UserAccount$0"/> </tuple>
+   <tuple> <atom label="StateOfServer$1"/> <atom label="Cookie$2"/> <atom label="UserAccount$0"/> </tuple>
    <types> <type ID="8"/> <type ID="12"/> <type ID="5"/> </types>
 </field>
 
 <field label="Authentication" ID="16" parentID="8">
-   <tuple> <atom label="StateOfServer$0"/> <atom label="UserName$1"/> <atom label="Password$1"/> <atom label="UserAccount$1"/> </tuple>
-   <tuple> <atom label="StateOfServer$0"/> <atom label="UserName$2"/> <atom label="Password$1"/> <atom label="UserAccount$0"/> </tuple>
-   <tuple> <atom label="StateOfServer$1"/> <atom label="UserName$1"/> <atom label="Password$1"/> <atom label="UserAccount$1"/> </tuple>
-   <tuple> <atom label="StateOfServer$1"/> <atom label="UserName$2"/> <atom label="Password$1"/> <atom label="UserAccount$0"/> </tuple>
+   <tuple> <atom label="StateOfServer$0"/> <atom label="UserName$0"/> <atom label="Password$1"/> <atom label="UserAccount$0"/> </tuple>
+   <tuple> <atom label="StateOfServer$0"/> <atom label="UserName$1"/> <atom label="Password$0"/> <atom label="UserAccount$2"/> </tuple>
+   <tuple> <atom label="StateOfServer$1"/> <atom label="UserName$0"/> <atom label="Password$1"/> <atom label="UserAccount$0"/> </tuple>
+   <tuple> <atom label="StateOfServer$1"/> <atom label="UserName$1"/> <atom label="Password$0"/> <atom label="UserAccount$2"/> </tuple>
    <types> <type ID="8"/> <type ID="6"/> <type ID="7"/> <type ID="5"/> </types>
 </field>
 
 <field label="Membership" ID="17" parentID="8">
    <tuple> <atom label="StateOfServer$0"/> <atom label="Repo$0"/> <atom label="UserAccount$0"/> </tuple>
-   <tuple> <atom label="StateOfServer$0"/> <atom label="Repo$1"/> <atom label="UserAccount$0"/> </tuple>
-   <tuple> <atom label="StateOfServer$0"/> <atom label="Repo$2"/> <atom label="UserAccount$0"/> </tuple>
-   <tuple> <atom label="StateOfServer$0"/> <atom label="Repo$3"/> <atom label="UserAccount$0"/> </tuple>
-   <tuple> <atom label="StateOfServer$0"/> <atom label="Repo$4"/> <atom label="UserAccount$1"/> </tuple>
-   <tuple> <atom label="StateOfServer$1"/> <atom label="Repo$0"/> <atom label="UserAccount$0"/> </tuple>
-   <tuple> <atom label="StateOfServer$1"/> <atom label="Repo$1"/> <atom label="UserAccount$0"/> </tuple>
-   <tuple> <atom label="StateOfServer$1"/> <atom label="Repo$2"/> <atom label="UserAccount$0"/> </tuple>
-   <tuple> <atom label="StateOfServer$1"/> <atom label="Repo$3"/> <atom label="UserAccount$0"/> </tuple>
    <types> <type ID="8"/> <type ID="4"/> <type ID="5"/> </types>
 </field>
 
 <field label="Ownership" ID="18" parentID="8">
    <tuple> <atom label="StateOfServer$0"/> <atom label="Repo$0"/> <atom label="UserAccount$0"/> </tuple>
-   <tuple> <atom label="StateOfServer$0"/> <atom label="Repo$1"/> <atom label="UserAccount$0"/> </tuple>
-   <tuple> <atom label="StateOfServer$0"/> <atom label="Repo$2"/> <atom label="UserAccount$0"/> </tuple>
-   <tuple> <atom label="StateOfServer$0"/> <atom label="Repo$3"/> <atom label="UserAccount$0"/> </tuple>
-   <tuple> <atom label="StateOfServer$0"/> <atom label="Repo$4"/> <atom label="UserAccount$1"/> </tuple>
-   <tuple> <atom label="StateOfServer$1"/> <atom label="Repo$0"/> <atom label="UserAccount$0"/> </tuple>
-   <tuple> <atom label="StateOfServer$1"/> <atom label="Repo$1"/> <atom label="UserAccount$0"/> </tuple>
-   <tuple> <atom label="StateOfServer$1"/> <atom label="Repo$2"/> <atom label="UserAccount$0"/> </tuple>
-   <tuple> <atom label="StateOfServer$1"/> <atom label="Repo$3"/> <atom label="UserAccount$0"/> </tuple>
    <types> <type ID="8"/> <type ID="4"/> <type ID="5"/> </types>
 </field>
 
@@ -135,9 +107,6 @@
 
 <sig label="this/Browser" ID="20" parentID="2">
    <atom label="Browser$0"/>
-   <atom label="Browser$1"/>
-   <atom label="Browser$2"/>
-   <atom label="Browser$3"/>
 </sig>
 
 <sig label="this/Cookie" ID="12" parentID="2">
@@ -153,21 +122,15 @@
 
 <field label="browsers" ID="22" parentID="21">
    <tuple> <atom label="StateOfBrowsers$0"/> <atom label="Browser$0"/> </tuple>
-   <tuple> <atom label="StateOfBrowsers$0"/> <atom label="Browser$1"/> </tuple>
-   <tuple> <atom label="StateOfBrowsers$0"/> <atom label="Browser$2"/> </tuple>
-   <tuple> <atom label="StateOfBrowsers$0"/> <atom label="Browser$3"/> </tuple>
    <tuple> <atom label="StateOfBrowsers$1"/> <atom label="Browser$0"/> </tuple>
-   <tuple> <atom label="StateOfBrowsers$1"/> <atom label="Browser$1"/> </tuple>
-   <tuple> <atom label="StateOfBrowsers$1"/> <atom label="Browser$2"/> </tuple>
-   <tuple> <atom label="StateOfBrowsers$1"/> <atom label="Browser$3"/> </tuple>
    <types> <type ID="21"/> <type ID="20"/> </types>
 </field>
 
 <field label="pages" ID="23" parentID="21">
-   <tuple> <atom label="StateOfBrowsers$0"/> <atom label="MyReposPage$2"/> </tuple>
+   <tuple> <atom label="StateOfBrowsers$0"/> <atom label="OtherErrorPage$0"/> </tuple>
    <tuple> <atom label="StateOfBrowsers$0"/> <atom label="RepoOwnerPage$0"/> </tuple>
-   <tuple> <atom label="StateOfBrowsers$1"/> <atom label="MyReposPage$1"/> </tuple>
-   <tuple> <atom label="StateOfBrowsers$1"/> <atom label="MyReposPage$2"/> </tuple>
+   <tuple> <atom label="StateOfBrowsers$1"/> <atom label="OtherErrorPage$0"/> </tuple>
+   <tuple> <atom label="StateOfBrowsers$1"/> <atom label="MyReposPage$0"/> </tuple>
    <types> <type ID="21"/> <type ID="24"/> </types>
 </field>
 
@@ -180,18 +143,16 @@
 </field>
 
 <field label="CurrentBrowserPages" ID="26" parentID="21">
-   <tuple> <atom label="StateOfBrowsers$0"/> <atom label="Browser$0"/> <atom label="MyReposPage$2"/> </tuple>
-   <tuple> <atom label="StateOfBrowsers$0"/> <atom label="Browser$3"/> <atom label="RepoOwnerPage$0"/> </tuple>
-   <tuple> <atom label="StateOfBrowsers$1"/> <atom label="Browser$0"/> <atom label="MyReposPage$2"/> </tuple>
-   <tuple> <atom label="StateOfBrowsers$1"/> <atom label="Browser$3"/> <atom label="MyReposPage$1"/> </tuple>
+   <tuple> <atom label="StateOfBrowsers$0"/> <atom label="Browser$0"/> <atom label="OtherErrorPage$0"/> </tuple>
+   <tuple> <atom label="StateOfBrowsers$0"/> <atom label="Browser$0"/> <atom label="RepoOwnerPage$0"/> </tuple>
+   <tuple> <atom label="StateOfBrowsers$1"/> <atom label="Browser$0"/> <atom label="OtherErrorPage$0"/> </tuple>
+   <tuple> <atom label="StateOfBrowsers$1"/> <atom label="Browser$0"/> <atom label="MyReposPage$0"/> </tuple>
    <types> <type ID="21"/> <type ID="20"/> <type ID="24"/> </types>
 </field>
 
 <field label="CurrentBrowserCookie" ID="27" parentID="21">
-   <tuple> <atom label="StateOfBrowsers$0"/> <atom label="Browser$2"/> <atom label="Cookie$2"/> </tuple>
-   <tuple> <atom label="StateOfBrowsers$0"/> <atom label="Browser$3"/> <atom label="Cookie$1"/> </tuple>
-   <tuple> <atom label="StateOfBrowsers$1"/> <atom label="Browser$2"/> <atom label="Cookie$2"/> </tuple>
-   <tuple> <atom label="StateOfBrowsers$1"/> <atom label="Browser$3"/> <atom label="Cookie$1"/> </tuple>
+   <tuple> <atom label="StateOfBrowsers$0"/> <atom label="Browser$0"/> <atom label="Cookie$2"/> </tuple>
+   <tuple> <atom label="StateOfBrowsers$1"/> <atom label="Browser$0"/> <atom label="Cookie$2"/> </tuple>
    <types> <type ID="21"/> <type ID="20"/> <type ID="12"/> </types>
 </field>
 
@@ -200,15 +161,9 @@
 
 <sig label="this/MyReposPage" ID="29" parentID="24">
    <atom label="MyReposPage$0"/>
-   <atom label="MyReposPage$1"/>
-   <atom label="MyReposPage$2"/>
 </sig>
 
 <field label="myRepos" ID="30" parentID="29">
-   <tuple> <atom label="MyReposPage$0"/> <atom label="Repo$0"/> </tuple>
-   <tuple> <atom label="MyReposPage$0"/> <atom label="Repo$1"/> </tuple>
-   <tuple> <atom label="MyReposPage$0"/> <atom label="Repo$2"/> </tuple>
-   <tuple> <atom label="MyReposPage$0"/> <atom label="Repo$3"/> </tuple>
    <types> <type ID="29"/> <type ID="4"/> </types>
 </field>
 
@@ -238,131 +193,197 @@
 </sig>
 
 <field label="repo" ID="39" parentID="37">
-   <tuple> <atom label="RepoOwnerPage$0"/> <atom label="Repo$4"/> </tuple>
+   <tuple> <atom label="RepoOwnerPage$0"/> <atom label="Repo$0"/> </tuple>
    <types> <type ID="37"/> <type ID="4"/> </types>
 </field>
 
 <sig label="this/CollaboratorPage" ID="40" parentID="24">
+   <atom label="CollaboratorPage$0"/>
 </sig>
 
 <field label="cRepo" ID="41" parentID="40">
+   <tuple> <atom label="CollaboratorPage$0"/> <atom label="Repo$0"/> </tuple>
    <types> <type ID="40"/> <type ID="4"/> </types>
 </field>
 
 <field label="collaborators" ID="42" parentID="40">
+   <tuple> <atom label="CollaboratorPage$0"/> <atom label="UserAccount$1"/> </tuple>
+   <tuple> <atom label="CollaboratorPage$0"/> <atom label="UserAccount$2"/> </tuple>
    <types> <type ID="40"/> <type ID="5"/> </types>
 </field>
 
 <sig label="this/NotFoundErrorPage" ID="43" parentID="24">
+   <atom label="NotFoundErrorPage$0"/>
 </sig>
 
 <sig label="this/OtherErrorPage" ID="44" parentID="24">
+   <atom label="OtherErrorPage$0"/>
 </sig>
 
 <sig label="this/Page" ID="24" parentID="2" abstract="yes">
 </sig>
 
-<sig label="this/State" ID="45" parentID="2">
+<sig label="this/LoggedInMainPageType" ID="45" parentID="46" one="yes">
+   <atom label="LoggedInMainPageType$0"/>
+</sig>
+
+<sig label="this/CreateRepoSuccessType" ID="47" parentID="46" one="yes">
+   <atom label="CreateRepoSuccessType$0"/>
+</sig>
+
+<sig label="this/CreateRepoPageNNType" ID="48" parentID="46" one="yes">
+   <atom label="CreateRepoPageNNType$0"/>
+</sig>
+
+<sig label="this/MyReposPageType" ID="49" parentID="46" one="yes">
+   <atom label="MyReposPageType$0"/>
+</sig>
+
+<sig label="this/CreateRepoPageNameType" ID="50" parentID="46" one="yes">
+   <atom label="CreateRepoPageNameType$0"/>
+</sig>
+
+<sig label="this/LoginType" ID="51" parentID="46" one="yes">
+   <atom label="LoginType$0"/>
+</sig>
+
+<sig label="this/LogoutType" ID="52" parentID="46" one="yes">
+   <atom label="LogoutType$0"/>
+</sig>
+
+<sig label="this/ClickRepoPageType" ID="53" parentID="46" one="yes">
+   <atom label="ClickRepoPageType$0"/>
+</sig>
+
+<sig label="this/SearchRepoPageType" ID="54" parentID="46" one="yes">
+   <atom label="SearchRepoPageType$0"/>
+</sig>
+
+<sig label="this/CollaboratorType" ID="55" parentID="46" one="yes">
+   <atom label="CollaboratorType$0"/>
+</sig>
+
+<sig label="this/AddCollaboratorType" ID="56" parentID="46" one="yes">
+   <atom label="AddCollaboratorType$0"/>
+</sig>
+
+<sig label="this/RemoveCollaboratorType" ID="57" parentID="46" one="yes">
+   <atom label="RemoveCollaboratorType$0"/>
+</sig>
+
+<sig label="this/DeleteRepoType" ID="58" parentID="46" one="yes">
+   <atom label="DeleteRepoType$0"/>
+</sig>
+
+<sig label="this/Type" ID="46" parentID="2" abstract="yes">
+</sig>
+
+<sig label="this/State" ID="59" parentID="2">
    <atom label="State$0"/>
    <atom label="State$1"/>
 </sig>
 
-<field label="browser" ID="46" parentID="45">
+<field label="browser" ID="60" parentID="59">
    <tuple> <atom label="State$0"/> <atom label="StateOfBrowsers$1"/> </tuple>
    <tuple> <atom label="State$1"/> <atom label="StateOfBrowsers$0"/> </tuple>
-   <types> <type ID="45"/> <type ID="21"/> </types>
+   <types> <type ID="59"/> <type ID="21"/> </types>
 </field>
 
-<field label="server" ID="47" parentID="45">
+<field label="server" ID="61" parentID="59">
    <tuple> <atom label="State$0"/> <atom label="StateOfServer$1"/> </tuple>
    <tuple> <atom label="State$1"/> <atom label="StateOfServer$0"/> </tuple>
-   <types> <type ID="45"/> <type ID="8"/> </types>
+   <types> <type ID="59"/> <type ID="8"/> </types>
 </field>
 
-<field label="nextState" ID="48" parentID="45">
-   <tuple> <atom label="State$1"/> <atom label="State$0"/> </tuple>
-   <types> <type ID="45"/> <type ID="45"/> </types>
+<field label="nextState" ID="62" parentID="59">
+   <tuple> <atom label="State$1"/> <atom label="State$0"/> <atom label="Browser$0"/> <atom label="DeleteRepoType$0"/> </tuple>
+   <types> <type ID="59"/> <type ID="59"/> <type ID="20"/> <type ID="46"/> </types>
 </field>
 
-<sig label="boolean/True" ID="49" parentID="50" one="yes">
+<sig label="boolean/True" ID="63" parentID="64" one="yes">
    <atom label="boolean/True$0"/>
 </sig>
 
-<sig label="boolean/False" ID="51" parentID="50" one="yes">
+<sig label="boolean/False" ID="65" parentID="64" one="yes">
    <atom label="boolean/False$0"/>
 </sig>
 
-<sig label="boolean/Bool" ID="50" parentID="2" abstract="yes">
+<sig label="boolean/Bool" ID="64" parentID="2" abstract="yes">
 </sig>
 
 <sig label="univ" ID="2" builtin="yes">
 </sig>
 
-<skolem label="$Combo_s" ID="52">
+<skolem label="$Combo_s" ID="66">
    <tuple> <atom label="StateOfBrowsers$0"/> <atom label="State$1"/> </tuple>
    <tuple> <atom label="StateOfBrowsers$1"/> <atom label="State$0"/> </tuple>
-   <types> <type ID="21"/> <type ID="45"/> </types>
+   <types> <type ID="21"/> <type ID="59"/> </types>
 </skolem>
 
-<skolem label="$Combo_s&apos;" ID="53">
+<skolem label="$Combo_s&apos;" ID="67">
    <tuple> <atom label="StateOfServer$0"/> <atom label="State$1"/> </tuple>
    <tuple> <atom label="StateOfServer$1"/> <atom label="State$0"/> </tuple>
-   <types> <type ID="8"/> <type ID="45"/> </types>
+   <types> <type ID="8"/> <type ID="59"/> </types>
 </skolem>
 
-<skolem label="$Combo_s&apos;&apos;" ID="54">
+<skolem label="$Combo_s&apos;&apos;" ID="68">
    <tuple> <atom label="State$1"/> </tuple>
-   <types> <type ID="45"/> </types>
+   <types> <type ID="59"/> </types>
 </skolem>
 
-<skolem label="$Combo_s&apos;&apos;&apos;" ID="55">
+<skolem label="$Combo_s&apos;&apos;&apos;" ID="69">
    <tuple> <atom label="State$0"/> </tuple>
-   <types> <type ID="45"/> </types>
+   <types> <type ID="59"/> </types>
 </skolem>
 
-<skolem label="$Combo_p" ID="56">
+<skolem label="$Combo_p" ID="70">
    <tuple> <atom label="RepoOwnerPage$0"/> </tuple>
    <types> <type ID="24"/> </types>
 </skolem>
 
-<skolem label="$Combo_p&apos;" ID="57">
-   <tuple> <atom label="MyReposPage$2"/> </tuple>
+<skolem label="$Combo_p&apos;" ID="71">
+   <tuple> <atom label="MyReposPage$0"/> </tuple>
    <types> <type ID="24"/> </types>
 </skolem>
 
-<skolem label="$Combo_r" ID="58">
-   <tuple> <atom label="Repo$4"/> </tuple>
+<skolem label="$Combo_r" ID="72">
+   <tuple> <atom label="Repo$0"/> </tuple>
    <types> <type ID="4"/> </types>
 </skolem>
 
-<skolem label="$Combo_c" ID="59">
+<skolem label="$Combo_c" ID="73">
    <tuple> <atom label="Cookie$2"/> </tuple>
    <types> <type ID="12"/> </types>
 </skolem>
 
-<skolem label="$Combo_c&apos;" ID="60">
+<skolem label="$Combo_c&apos;" ID="74">
    <tuple> <atom label="Cookie$2"/> </tuple>
    <types> <type ID="12"/> </types>
 </skolem>
 
-<skolem label="$StateTransition_p" ID="61">
+<skolem label="$Combo_b" ID="75">
+   <tuple> <atom label="Browser$0"/> </tuple>
+   <types> <type ID="20"/> </types>
+</skolem>
+
+<skolem label="$Combo_t" ID="76">
+   <tuple> <atom label="DeleteRepoType$0"/> </tuple>
+   <types> <type ID="46"/> </types>
+</skolem>
+
+<skolem label="$StateTransition_p" ID="77">
    <tuple> <atom label="RepoOwnerPage$0"/> </tuple>
    <types> <type ID="24"/> </types>
 </skolem>
 
-<skolem label="$StateTransition_p&apos;" ID="62">
-   <tuple> <atom label="MyReposPage$1"/> </tuple>
+<skolem label="$StateTransition_p&apos;" ID="78">
+   <tuple> <atom label="MyReposPage$0"/> </tuple>
    <types> <type ID="24"/> </types>
-</skolem>
-
-<skolem label="$StateTransition_b" ID="63">
-   <tuple> <atom label="Browser$3"/> </tuple>
-   <types> <type ID="20"/> </types>
 </skolem>
 
 </instance>
 
-<source filename="/Users/wzimrin/Programs/summer2012/Alloy-Ex/NEWgithub.als" content="open util/boolean&#x000a;&#x000a;sig Repo { }&#x000a;sig UserAccount { }&#x000a;//abstract sig UserAction { }&#x000a;//sig LocalAction, ServerRequest extends UserAction { }&#x000a;//sig ServerTransition { }&#x000a;sig UserName { }&#x000a;sig Password { }&#x000a;sig StateOfServer {&#x000a;&#x0009;repos: set Repo,&#x000a;&#x0009;users: set UserAccount,&#x000a;&#x0009;cookies: set Cookie,&#x000a;&#x0009;usernames: set UserName,&#x000a;&#x0009;passwords: set Password,&#x000a;&#x0009;Identification: cookies -&gt; lone users,&#x000a;&#x0009;Authentication: usernames -&gt; passwords -&gt; lone users,&#x000a;&#x0009;Membership: repos -&gt; set users,&#x000a;&#x0009;Ownership: repos -&gt; one users,&#x000a;&#x0009;nextStates: set StateOfServer &#x000a;}&#x000a;&#x000a;fact {&#x000a;&#x0009;//all s: StateOfBrowsers, p: Page, u: UserAction | no d: s.DifficultyAssignment[p][u] | int d &lt; 1&#x000a;&#x0009;all s: StateOfServer, r: Repo {&#x000a;&#x0009;&#x0009;s.Ownership[r] != none &lt;=&gt; s.Membership[r] != none&#x000a;&#x0009;&#x0009;s.Ownership[r] != none &lt;=&gt; r in s.repos&#x000a;&#x0009;}&#x000a;&#x0009;all s: StateOfServer, r: s.repos, u: s.users | s.Ownership[r] = u implies u in s.Membership[r]&#x000a;&#x0009;all s: StateOfServer, r: s.repos | s.Ownership[r] in s.users and s.Membership[r] in s.users&#x000a;&#x0009;all s,s&apos;:StateOfServer {&#x000a;&#x0009;&#x0009;s&apos; in s.nextStates iff Transition[s,s&apos;]&#x000a;&#x0009;}&#x000a;&#x0009;all s,s&apos;:StateOfServer {&#x000a;&#x0009;&#x0009;s&apos; in s.*nextStates or s in s&apos;.*nextStates&#x000a;&#x000a;&#x0009;&#x0009;(s.Identification = s&apos;.Identification and&#x000a;&#x0009;&#x0009;s.Authentication = s&apos;.Authentication and&#x000a;&#x0009;&#x0009;s.Membership = s&apos;.Membership and&#x000a;&#x0009;&#x0009;s.Ownership = s&apos;.Ownership and&#x000a;&#x0009;&#x0009;s.cookies = s&apos;.cookies) =&gt; s=s&apos;&#x000a;&#x0009;}&#x000a;&#x0009;all s:StateOfServer, u: s.users {&#x000a;&#x0009;&#x0009;//some c:Cookie | s.Identification[c] = u&#x000a;&#x0009;&#x0009;some n:UserName, p:Password | s.Authentication[n][p] = u&#x000a;&#x0009;}&#x000a;&#x0009;all s:StateOfServer, p,p&apos;:Password, un,un&apos;:UserName {&#x000a;&#x0009;&#x0009;s.Authentication[un][p] = s.Authentication[un&apos;][p&apos;] =&gt; ((un = un&apos; and p = p&apos;) or s.Authentication[un][p] = none)&#x000a;&#x0009;&#x0009;s.Authentication[un][p] != s.Authentication[un&apos;][p&apos;] =&gt; &#x000a;&#x0009;&#x0009;(un != un&apos; or&#x000a;&#x0009;&#x0009;s.Authentication[un][p] = none or&#x000a;&#x0009;&#x0009;s.Authentication[un&apos;][p&apos;] = none)&#x000a;&#x0009;}&#x000a;&#x0009;//all s:StateOfServer, c,c&apos;:Cookie | s.Identification[c] = s.Identification[c&apos;] implies c=c&apos;&#x000a;}&#x000a;&#x000a;pred Transition[s,s&apos;:StateOfServer] {&#x000a;&#x0009;NoOp[s,s&apos;] or &#x000a;&#x0009;(some u:UserAccount, r:Repo {&#x000a;&#x0009;&#x0009;CreateRepo[s,s&apos;,u,r] or&#x000a;&#x0009;&#x0009;DeleteRepo[s,s&apos;,u,r]&#x000a;&#x0009;}) or&#x000a;&#x0009;(some u,u&apos;:UserAccount, r:Repo {&#x000a;&#x0009;&#x0009;GrantAccess[s,s&apos;,u,u&apos;,r] or&#x000a;&#x0009;&#x0009;RevokeAccess[s,s&apos;,u,u&apos;,r]&#x000a;&#x0009;}) or&#x000a;&#x0009;(some u:UserAccount, un:UserName, p:Password, c:Cookie {&#x000a;&#x0009;&#x0009;Login[s,s&apos;,u,un,p,c] or&#x000a;&#x0009;&#x0009;Logout[s,s&apos;,c]&#x000a;&#x0009;})&#x000a;}&#x000a;&#x000a;pred NoOp[s,s&apos;:StateOfServer] {&#x000a;&#x0009;s.Identification = s&apos;.Identification&#x000a;&#x0009;s.Authentication = s&apos;.Authentication&#x000a;&#x0009;s.Membership = s&apos;.Membership&#x000a;&#x0009;s.Ownership = s&apos;.Ownership &#x000a;&#x0009;s.cookies = s&apos;.cookies&#x000a;}&#x000a;&#x000a;pred CreateRepo[s,s&apos;:StateOfServer, u:UserAccount, r:Repo] {&#x000a;&#x0009;s.Identification = s&apos;.Identification&#x000a;&#x0009;s.Authentication = s&apos;.Authentication&#x000a;&#x0009;!(r in s.repos)&#x000a;&#x0009;s&apos;.Membership = s.Membership + (r -&gt; u)&#x000a;&#x0009;s&apos;.Ownership = s.Ownership + (r -&gt; u) &#x000a;&#x0009;s.cookies = s&apos;.cookies&#x000a;}&#x000a;&#x000a;pred DeleteRepo[s,s&apos;:StateOfServer, u:UserAccount, r:Repo] {&#x000a;&#x0009;s.Identification = s&apos;.Identification&#x000a;&#x0009;s.Authentication = s&apos;.Authentication&#x000a;&#x0009;!(r in s&apos;.repos)&#x000a;&#x0009;s.Membership = s&apos;.Membership + (r -&gt; u)&#x000a;&#x0009;s.Ownership = s&apos;.Ownership + (r -&gt; u) &#x000a;&#x0009;s.cookies = s&apos;.cookies&#x000a;}&#x000a;&#x000a;pred GrantAccess[s,s&apos;:StateOfServer, o,u:UserAccount, r:Repo] {&#x000a;&#x0009;s.Identification = s&apos;.Identification&#x000a;&#x0009;s.Authentication = s&apos;.Authentication&#x000a;&#x0009;s.Ownership = s&apos;.Ownership&#x000a;&#x0009;s.Ownership[r] = o&#x000a;&#x0009;s&apos;.Membership = s.Membership + (r -&gt; u)&#x000a;&#x0009;!(u in s.Membership[r])&#x000a;&#x0009;s.cookies = s&apos;.cookies&#x000a;}&#x000a;&#x000a;pred RevokeAccess[s,s&apos;:StateOfServer, o,u:UserAccount, r:Repo] {&#x000a;&#x0009;s.Identification = s&apos;.Identification&#x000a;&#x0009;s.Authentication = s&apos;.Authentication&#x000a;&#x0009;s.Ownership = s&apos;.Ownership&#x000a;&#x0009;s.Ownership[r] = o&#x000a;&#x0009;s.Membership = s&apos;.Membership + (r -&gt; u)&#x000a;&#x0009;!(u in s&apos;.Membership[r])&#x000a;&#x0009;s.cookies = s&apos;.cookies&#x000a;}&#x000a;&#x000a;pred Login[s,s&apos;:StateOfServer, u:UserAccount, un:UserName, p:Password, c:Cookie] {&#x000a;&#x0009;s.Authentication = s&apos;.Authentication&#x000a;&#x0009;s.Ownership = s&apos;.Ownership&#x000a;&#x0009;s.Membership = s&apos;.Membership&#x000a;&#x0009;(un -&gt; p -&gt; u) in s.Authentication&#x000a;&#x0009;!(c in s.cookies)&#x000a;&#x0009;s.cookies+c=s&apos;.cookies&#x000a;&#x0009;s.Identification + (c -&gt; u) = s&apos;.Identification&#x000a;}&#x000a;&#x000a;pred Logout[s,s&apos;:StateOfServer, c:Cookie] {&#x000a;&#x0009;s.Authentication = s&apos;.Authentication&#x000a;&#x0009;s.Ownership = s&apos;.Ownership&#x000a;&#x0009;s.Membership = s&apos;.Membership&#x000a;&#x0009;all u&apos;:s&apos;.users | !((c -&gt; u&apos;) in s&apos;.Identification)&#x000a;&#x0009;some u:s.users |&#x0009;s&apos;.Identification + (c -&gt; u) = s.Identification&#x000a;&#x0009;s.cookies = s&apos;.cookies&#x000a;}&#x000a;&#x000a;sig Browser { }&#x000a;sig Cookie { }&#x000a;sig StateOfBrowsers {&#x000a;&#x0009;browsers: set Browser,&#x000a;&#x0009;pages: set Page,&#x000a;&#x0009;cookies: set Cookie,&#x000a;&#x0009;&#x000a;&#x0009;CurrentBrowserPages: browsers -&gt; set pages,&#x000a;&#x0009;CurrentBrowserCookie: browsers -&gt; lone cookies,&#x000a;&#x0009;//DifficultyAssignment: Page -&gt; Page -&gt; one Int,&#x000a;&#x0009;//Discoverability: Page -&gt; Page -&gt; one Bool&#x000a;}&#x000a;&#x000a;fact {&#x000a;&#x0009;//all pages in a state belong to a browser&#x000a;&#x0009;all s:StateOfBrowsers, p: s.pages {&#x000a;&#x0009;&#x0009;some b:Browser {&#x000a;&#x0009;&#x0009;&#x0009;b in s.browsers&#x000a;&#x0009;&#x0009;&#x0009;p in s.CurrentBrowserPages[b]&#x000a;&#x0009;&#x0009;}&#x000a;&#x0009;}&#x000a;&#x0009;all s:StateOfBrowsers, p:s.pages, b,b&apos;:s.browsers {&#x000a;&#x0009;&#x0009;p in s.CurrentBrowserPages[b] and p in s.CurrentBrowserPages[b&apos;] =&gt; b = b&apos;&#x000a;&#x0009;}&#x000a;&#x0009;all s:StateOfBrowsers, b,b&apos;:s.browsers {&#x000a;&#x0009;&#x0009;s.CurrentBrowserCookie[b] = s.CurrentBrowserCookie[b&apos;] =&gt; (b = b&apos; or s.CurrentBrowserCookie[b] = none)&#x000a;&#x0009;}&#x000a;}&#x000a;&#x000a;abstract sig Page { }&#x000a;sig LoggedInMainPage extends Page { }&#x000a;pred LoggedInMainPageOK[s:StateOfServer, p:Page] {&#x000a;&#x0009;p in LoggedInMainPage&#x000a;}&#x000a;sig MyReposPage extends Page {&#x000a;&#x0009; myRepos: set Repo&#x000a;}&#x000a;pred MyReposPageOK[s:StateOfServer, p:Page, c:Cookie] {&#x000a;&#x0009;p in MyReposPage&#x000a;&#x0009;let u = s.Identification[c] {&#x000a;&#x0009;&#x0009;u != none&#x000a;&#x0009;&#x0009;all r:Repo | r in p.myRepos &lt;=&gt; u in s.Membership[r]&#x000a;&#x0009;}&#x000a;}&#x000a;&#x000a;abstract sig CreateRepoPage extends Page { }&#x000a;sig CreateRepoPageVN, CreateRepoPageIN, CreateRepoPageNN extends CreateRepoPage { }//valid name, invalid name, no name&#x000a;pred CreateRepoPageVNOK[s:StateOfServer,p:Page] {&#x000a;&#x0009;p in CreateRepoPageVN&#x000a;}&#x000a;pred CreateRepoPageINOK[s:StateOfServer,p:Page] {&#x000a;&#x0009;p in CreateRepoPageIN&#x000a;}&#x000a;pred CreateRepoPageNNOK[s:StateOfServer,p:Page] {&#x000a;&#x0009;p in CreateRepoPageNN&#x000a;}&#x000a;&#x000a;sig LoginPage extends Page { }&#x000a;pred LoginPageOK[s:StateOfServer, p:Page] {&#x000a;&#x0009;p in LoginPage&#x000a;}&#x000a;&#x000a;abstract sig RepoPage extends Page {&#x000a;&#x0009;repo: one Repo&#x000a;}&#x000a;pred RepoPageOK[s:StateOfServer, p:Page, r:Repo] {&#x000a;&#x0009;p in RepoPage&#x000a;&#x0009;p.repo = r&#x000a;&#x0009;r in s.repos&#x000a;}&#x000a;&#x000a;sig RepoOwnerPage extends RepoPage { }&#x000a;sig RepoMemberPage extends RepoPage { }&#x000a;&#x000a;sig CollaboratorPage extends Page {&#x000a;&#x0009;cRepo: one Repo,&#x000a;&#x0009;collaborators: set UserAccount&#x000a;}&#x000a;pred CollaboratorPageOK[s:StateOfServer, p:Page, r:Repo] {&#x000a;&#x0009;p in CollaboratorPage&#x000a;&#x0009;p.cRepo = r&#x000a;&#x0009;p.cRepo in s.repos&#x000a;&#x0009;p.collaborators = s.Membership[r]&#x000a;}&#x000a;&#x000a;/////////////////////////////////&#x000a;----------------------------&#x000a;/////////////////////////////////&#x000a;&#x000a;/*sig LoginWithErrorPage extends Page { }&#x000a;pred LoginWithErrorPageOK[s:StateOfServer, p:Page] {&#x000a;&#x0009;p in LoginPage&#x000a;}*/&#x000a;&#x000a;&#x000a;sig NotFoundErrorPage extends Page { }&#x000a;&#x000a;sig OtherErrorPage extends Page { }&#x000a;&#x000a;/////////////////////////////////&#x000a;----------------------------&#x000a;/////////////////////////////////&#x000a;&#x000a;&#x000a;pred LoginLink[ss,ss&apos;:StateOfServer, p,p&apos;:Page, c,c&apos;:Cookie] {&#x000a;&#x0009;p in LoginPage&#x000a;&#x0009;let u = ss.Identification[c] {&#x000a;&#x0009;&#x0009;u != none implies {&#x000a;&#x0009;&#x0009;&#x0009;NoOp[ss,ss&apos;]&#x000a;&#x0009;&#x0009;&#x0009;c = c&apos;&#x000a;&#x0009;&#x0009;&#x0009;p&apos; in LoggedInMainPage&#x000a;&#x0009;&#x0009;}&#x000a;&#x0009;&#x0009;u = none implies {&#x000a;&#x0009;&#x0009;&#x0009;({&#x000a;&#x0009;&#x0009;&#x0009;&#x0009;some un:UserName, p:Password, u:UserAccount {&#x000a;&#x0009;&#x0009;&#x0009;&#x0009;&#x0009;Login[ss,ss&apos;,u,un,p,c&apos;]&#x000a;&#x0009;&#x0009;&#x0009;&#x0009;&#x0009;p&apos; in LoggedInMainPage&#x000a;&#x0009;&#x0009;&#x0009;&#x0009;}&#x000a;&#x0009;&#x0009;&#x0009;}) or&#x000a;&#x0009;&#x0009;&#x0009;({&#x000a;&#x0009;&#x0009;&#x0009;&#x0009;c=c&apos;&#x000a;&#x0009;&#x0009;&#x0009;&#x0009;NoOp[ss,ss&apos;]&#x000a;&#x0009;&#x0009;&#x0009;&#x0009;p&apos; in LoginPage //LoginErrorPage&#x000a;&#x0009;&#x0009;&#x0009;})&#x000a;&#x0009;&#x0009;}&#x000a;&#x0009;}&#x000a;}&#x000a;&#x000a;pred LogoutLink[ss,ss&apos;:StateOfServer, p&apos;:Page, c,c&apos;:lone Cookie] {&#x000a;&#x0009;p&apos; in LoginPage&#x000a;&#x0009;c&apos; = none&#x000a;&#x0009;Logout[ss,ss&apos;,c]&#x000a;}&#x000a;&#x000a;pred CreateRepoPageNNLink[ss,ss&apos;:StateOfServer, p,p&apos;:Page, c,c&apos;:lone Cookie] {&#x000a;&#x0009;NoOp[ss,ss&apos;]&#x000a;&#x0009;CreateRepoPageNNOK[ss&apos;,p&apos;]&#x000a;&#x0009;p in MyReposPage + LoggedInMainPage&#x000a;&#x0009;ss.Identification[c] != none&#x000a;&#x0009;c = c&apos;&#x000a;}&#x000a;&#x000a;pred CreateRepoPageNameLink[ss,ss&apos;:StateOfServer, p,p&apos;:Page, c,c&apos;:lone Cookie] {&#x000a;&#x0009;NoOp[ss,ss&apos;]&#x000a;&#x0009;CreateRepoPageINOK[ss&apos;,p&apos;] or CreateRepoPageVNOK[ss&apos;,p&apos;]&#x000a;&#x0009;p in CreateRepoPage&#x000a;&#x0009;ss.Identification[c] != none&#x000a;&#x0009;c = c&apos;&#x000a;}&#x000a;&#x000a;//goes to repo page and creates a new repo&#x000a;pred CreateRepoSuccessLink[ss,ss&apos;:StateOfServer, p,p&apos;:Page, c,c&apos;:lone Cookie] {&#x000a;&#x0009;some r:Repo {&#x000a;&#x0009;&#x0009;let u = ss.Identification[c] {&#x000a;&#x0009;&#x0009;&#x0009;CreateRepo[ss,ss&apos;,u,r]&#x000a;&#x0009;&#x0009;&#x0009;p in CreateRepoPageVN&#x000a;&#x0009;&#x0009;&#x0009;RepoPageOK[ss&apos;,p&apos;,r]&#x000a;&#x0009;&#x0009;}&#x000a;&#x0009;}&#x000a;&#x0009;c = c&apos;&#x000a;}&#x000a;&#x000a;pred LoggedInMainPageLink[ss,ss&apos;:StateOfServer, p&apos;:Page, c,c&apos;:lone Cookie] {&#x000a;&#x0009;LoggedInMainPageOK[ss&apos;,p&apos;]&#x000a;&#x0009;NoOp[ss,ss&apos;]&#x000a;&#x0009;ss.Identification[c] != none&#x000a;&#x0009;c = c&apos;&#x000a;}&#x000a;&#x000a;pred MyReposPageLink[ss,ss&apos;:StateOfServer, p&apos;:Page, c,c&apos;:lone Cookie] {&#x000a;&#x0009;NoOp[ss,ss&apos;]&#x000a;&#x0009;c=c&apos;&#x000a;&#x0009;MyReposPageOK[ss&apos;,p&apos;,c]&#x000a;&#x0009;ss.Identification[c] != none&#x000a;}&#x000a;&#x000a;pred RepoPageLink[ss,ss&apos;:StateOfServer, p,p&apos;:Page, r:Repo, c,c&apos;:lone Cookie] {&#x000a;&#x0009;NoOp[ss,ss&apos;]&#x000a;&#x0009;let u = ss.Identification[c] {&#x000a;&#x0009;&#x0009;p in LoggedInMainPage or (p in MyReposPage and r in p.myRepos)&#x000a;&#x0009;&#x0009;({&#x000a;&#x0009;&#x0009;&#x0009;u != none&#x000a;&#x0009;&#x0009;&#x0009;RepoPageOK[ss&apos;,p&apos;,r]&#x000a;&#x0009;&#x0009;&#x0009;(u in ss.Ownership[p&apos;.repo] and p&apos; in RepoOwnerPage) or&#x000a;&#x0009;&#x0009;&#x0009;(u in ss.Membership[p&apos;.repo] and !(u in ss.Ownership[p&apos;.repo]) and p&apos; in RepoMemberPage)&#x000a;&#x0009;&#x0009;}) or&#x000a;&#x0009;&#x0009;!(u in ss.Membership[r]) and LoggedInMainPageOK[ss&apos;,p&apos;] //FIXME: should go to permissions error page&#x000a;&#x0009;}&#x000a;&#x0009;c = c&apos;&#x000a;}&#x000a;&#x000a;pred CollaboratorLink[ss,ss&apos;:StateOfServer, p,p&apos;:Page, r:Repo, c,c&apos;:lone Cookie] {&#x000a;&#x0009;NoOp[ss,ss&apos;]&#x000a;&#x0009;p in RepoOwnerPage&#x000a;&#x0009;p.repo = r&#x000a;&#x0009;CollaboratorPageOK[ss&apos;,p&apos;,r]&#x000a;&#x0009;c = c&apos;&#x000a;&#x0009;ss.Identification[c] != none&#x000a;&#x0009;ss.Identification[c] in ss.Ownership[r]&#x000a;}&#x000a;&#x000a;pred AddCollaboratorLink[ss,ss&apos;:StateOfServer, p,p&apos;:Page, r:Repo, c,c&apos;:lone Cookie] {&#x000a;&#x0009;p in CollaboratorPage&#x000a;&#x0009;p.cRepo = r&#x000a;&#x0009;CollaboratorPageOK[ss&apos;,p&apos;,r]&#x000a;&#x0009;c = c&apos;&#x000a;&#x0009;some u:UserAccount {&#x000a;&#x0009;&#x0009;!(u in ss.Membership[r])&#x000a;&#x0009;&#x0009;GrantAccess[ss,ss&apos;,ss.Identification[c],u,r]&#x000a;&#x0009;}&#x000a;}&#x000a;&#x000a;pred RemoveCollaboratorLink[ss,ss&apos;:StateOfServer, p,p&apos;:Page, r:Repo, c,c&apos;:lone Cookie] {&#x000a;&#x0009;p in CollaboratorPage&#x000a;&#x0009;p.cRepo = r&#x000a;&#x0009;CollaboratorPageOK[ss&apos;,p&apos;,r]&#x000a;&#x0009;c = c&apos;&#x000a;&#x0009;some u:p.collaborators {&#x000a;&#x0009;&#x0009;RevokeAccess[ss,ss&apos;,ss.Identification[c],u,r]&#x000a;&#x0009;}&#x000a;}&#x000a;&#x000a;pred DeleteRepoLink[ss,ss&apos;:StateOfServer, p,p&apos;:Page, r:Repo, c,c&apos;:lone Cookie] {&#x000a;&#x0009;p in RepoOwnerPage&#x000a;&#x0009;p.repo = r&#x000a;&#x0009;MyReposPageOK[ss&apos;,p&apos;,c]&#x000a;&#x0009;c = c&apos;&#x000a;&#x0009;DeleteRepo[ss,ss&apos;,ss.Identification[c],r]&#x000a;}&#x000a;&#x000a;pred StateTransition[s,s&apos;:State] {&#x000a;&#x0009;some p:s.browser.pages,p&apos;:s&apos;.browser.pages, b:s.browser.browsers {&#x000a;&#x0009;&#x0009;ServerRequest[s,s&apos;,p,p&apos;,b]&#x000a;&#x0009;}&#x000a;}&#x000a;&#x000a;pred ServerRequest[s,s&apos;:State,p,p&apos;:Page,b:Browser] {&#x000a;&#x0009;s.browser.browsers = s&apos;.browser.browsers&#x000a;&#x0009;s.browser.CurrentBrowserPages - (b-&gt;p) + (b-&gt;p&apos;) = s&apos;.browser.CurrentBrowserPages&#x000a;&#x0009;p in s.browser.CurrentBrowserPages[b]&#x000a;&#x0009;!(p&apos; in s.browser.CurrentBrowserPages[b])&#x000a;&#x0009;let c = s.browser.CurrentBrowserCookie[b],&#x000a;&#x0009;&#x0009;&#x0009;c&apos; = s&apos;.browser.CurrentBrowserCookie[b] {&#x000a;&#x0009;&#x0009;s.browser.CurrentBrowserCookie - (b -&gt; c) + (b -&gt; c&apos;) = s&apos;.browser.CurrentBrowserCookie&#x000a;&#x0009;&#x0009;LoggedInMainPageLink[s.server, s&apos;.server, p&apos;, c, c&apos;] or &#x000a;&#x0009;&#x0009;CreateRepoSuccessLink[s.server, s&apos;.server, p, p&apos;, c, c&apos;] or&#x000a;&#x0009;&#x0009;CreateRepoPageNNLink[s.server, s&apos;.server, p, p&apos;, c, c&apos;] or&#x000a;&#x0009;&#x0009;MyReposPageLink[s.server, s&apos;.server, p&apos;,c,c&apos;] or&#x000a;&#x0009;&#x0009;CreateRepoPageNameLink[s.server, s&apos;.server, p, p&apos;, c, c&apos;] or&#x000a;&#x0009;&#x0009;LoginLink[s.server, s&apos;.server, p,p&apos;,c,c&apos;] or&#x000a;&#x0009;&#x0009;LogoutLink[s.server, s&apos;.server, p&apos;, c,c&apos;] or&#x000a;&#x0009;&#x0009;(some r:Repo {&#x000a;&#x0009;&#x0009;&#x0009;RepoPageLink[s.server, s&apos;.server, p, p&apos;, r, c, c&apos;] or&#x000a;&#x0009;&#x0009;&#x0009;CollaboratorLink[s.server, s&apos;.server, p, p&apos;, r, c, c&apos;] or&#x000a;&#x0009;&#x0009;&#x0009;AddCollaboratorLink[s.server, s&apos;.server, p, p&apos;, r, c, c&apos;] or&#x000a;&#x0009;&#x0009;&#x0009;RemoveCollaboratorLink[s.server, s&apos;.server, p, p&apos;, r, c, c&apos;] or&#x000a;&#x0009;&#x0009;&#x0009;DeleteRepoLink[s.server, s&apos;.server, p,p&apos;, r, c, c&apos;]&#x000a;&#x0009;&#x0009;})&#x000a;&#x0009;}&#x000a;}&#x000a;&#x000a;sig State {&#x000a;&#x0009;browser: one StateOfBrowsers,&#x000a;&#x0009;server: one StateOfServer,&#x000a;&#x0009;nextState: set State }&#x000a;&#x000a;fact {&#x000a;&#x0009;all s,s&apos;:State|s.browser = s&apos;.browser and s.server = s&apos;.server implies s=s&apos;&#x000a;&#x0009;all s,s&apos;:State {&#x000a;&#x0009;&#x0009;s&apos; in s.nextState iff StateTransition[s,s&apos;]&#x000a;&#x0009;&#x0009;s in s&apos;.*nextState or s&apos; in s.*nextState&#x000a;&#x0009;}&#x000a;&#x0009;all sb:StateOfBrowsers | some s:State | sb = s.browser&#x000a;&#x0009;all ss:StateOfServer | some s:State | ss = s.server&#x000a;&#x0009;all s:State | s.server.cookies = s.browser.cookies&#x000a;}&#x000a;&#x000a;pred Combo {&#x000a;&#x0009;//some p,p&apos;:Password | p != p&apos;&#x000a;&#x0009;/*some s,s&apos;:State, p,p&apos;:Page, r:Repo, c,c&apos;:Cookie {&#x000a;&#x0009;&#x0009;p in s.browser.pages&#x000a;&#x0009;&#x0009;p&apos; in s&apos;.browser.pages&#x000a;&#x0009;&#x0009;CollaboratorLink[s.server,s&apos;.server,p,p&apos;,r,c,c&apos;]&#x000a;&#x0009;&#x0009;StateTransition[s,s&apos;]&#x000a;&#x0009;}&#x000a;&#x0009;some s,s&apos;:State, p,p&apos;:Page, r:Repo, c,c&apos;:Cookie {&#x000a;&#x0009;&#x0009;p in s.browser.pages&#x000a;&#x0009;&#x0009;p&apos; in s&apos;.browser.pages&#x000a;&#x0009;&#x0009;AddCollaboratorLink[s.server,s&apos;.server,p,p&apos;,r,c,c&apos;]&#x000a;&#x0009;&#x0009;StateTransition[s,s&apos;]&#x000a;&#x0009;}&#x000a;&#x0009;some s,s&apos;:State, p,p&apos;:Page, r:Repo, c,c&apos;:Cookie {&#x000a;&#x0009;&#x0009;p in s.browser.pages&#x000a;&#x0009;&#x0009;p&apos; in s&apos;.browser.pages&#x000a;&#x0009;&#x0009;RemoveCollaboratorLink[s.server,s&apos;.server,p,p&apos;,r,c,c&apos;]&#x000a;&#x0009;&#x0009;StateTransition[s,s&apos;]&#x000a;&#x0009;}*/&#x000a;&#x0009;some s,s&apos;:State, p,p&apos;:Page, r:Repo, c,c&apos;:Cookie {&#x000a;&#x0009;&#x0009;p in s.browser.pages&#x000a;&#x0009;&#x0009;p&apos; in s&apos;.browser.pages&#x000a;&#x0009;&#x0009;DeleteRepoLink[s.server,s&apos;.server,p,p&apos;,r,c,c&apos;]&#x000a;&#x0009;&#x0009;StateTransition[s,s&apos;]&#x000a;&#x0009;}&#x000a;&#x0009;/*some s,s&apos;:State, p:Page, p&apos;:RepoPage, r:Repo, c,c&apos;:Cookie {&#x000a;&#x0009;&#x0009;p in s.browser.pages&#x000a;&#x0009;&#x0009;p&apos; in s&apos;.browser.pages&#x000a;&#x0009;&#x0009;RepoPageLink[s.server,s&apos;.server,p,p&apos;,r,c,c&apos;]&#x000a;&#x0009;&#x0009;StateTransition[s,s&apos;]&#x000a;&#x0009;}*/&#x000a;&#x0009;/*some s,s&apos;:State, p,p&apos;:Page, c,c&apos;:Cookie {&#x000a;&#x0009;&#x0009;p in s.browser.pages&#x000a;&#x0009;&#x0009;p&apos; in s&apos;.browser.pages&#x000a;&#x0009;&#x0009;some b:Browser {&#x000a;&#x0009;&#x0009;&#x0009;ServerRequest[s, s&apos;, p, p&apos;, b]&#x000a;&#x0009;&#x0009;}&#x000a;&#x0009;&#x0009;MyReposPageLink[s.server,s&apos;.server,p&apos;,c,c&apos;]&#x000a;&#x0009;&#x0009;StateTransition[s,s&apos;]&#x000a;&#x0009;}*/&#x000a;&#x000a;&#x0009;/*some s,s&apos;:State, p:Page, p&apos;:Page, c,c&apos;:Cookie {&#x000a;&#x0009;&#x0009;p in s.browser.pages&#x000a;&#x0009;&#x0009;p&apos; in s&apos;.browser.pages&#x000a;&#x0009;&#x0009;some b:Browser {&#x000a;&#x0009;&#x0009;&#x0009;ServerRequest[s, s&apos;, p, p&apos;, b]&#x000a;&#x0009;&#x0009;}&#x000a;&#x0009;&#x0009;LoginLink[s.server,s&apos;.server,p,p&apos;,c,c&apos;]&#x000a;&#x0009;&#x0009;StateTransition[s,s&apos;]&#x000a;&#x0009;}*/&#x000a;&#x0009;/*some s,s&apos;:State, p,p&apos;:Page, c:Cookie,c&apos;:lone Cookie {&#x000a;&#x0009;&#x0009;p in s.browser.pages&#x000a;&#x0009;&#x0009;p&apos; in s&apos;.browser.pages&#x000a;&#x0009;&#x0009;some b:Browser {&#x000a;&#x0009;&#x0009;&#x0009;ServerRequest[s, s&apos;, p, p&apos;, b]&#x000a;&#x0009;&#x0009;}&#x000a;&#x0009;&#x0009;LogoutLink[s.server,s&apos;.server,p&apos;,c,c&apos;]&#x000a;&#x0009;&#x0009;StateTransition[s,s&apos;]&#x000a;&#x0009;}*/&#x000a;&#x000a;/*&#x000a;&#x0009;some s,s&apos;:State, p,p&apos;:Page, c,c&apos;:Cookie {&#x000a;&#x0009;&#x0009;p in s.browser.pages&#x000a;&#x0009;&#x0009;p&apos; in s&apos;.browser.pages&#x000a;&#x0009;&#x0009;CreateRepoSuccessLink[s.server,s&apos;.server,p,p&apos;,c,c&apos;]&#x000a;&#x0009;&#x0009;StateTransition[s,s&apos;]&#x000a;&#x0009;}&#x000a;&#x0009;some s,s&apos;:State, p,p&apos;:Page, c,c&apos;:Cookie {&#x000a;&#x0009;&#x0009;p in s.browser.pages&#x000a;&#x0009;&#x0009;p&apos; in s&apos;.browser.pages&#x000a;&#x0009;&#x0009;CreateRepoPageNNLink[s.server,s&apos;.server,p,p&apos;,c,c&apos;]&#x000a;&#x0009;&#x0009;StateTransition[s,s&apos;]&#x000a;&#x0009;}&#x000a;&#x0009;some s,s&apos;:State, p,p&apos;:Page, c,c&apos;:Cookie {&#x000a;&#x0009;&#x0009;p in s.browser.pages&#x000a;&#x0009;&#x0009;p&apos; in s&apos;.browser.pages&#x000a;&#x0009;&#x0009;CreateRepoPageNameLink[s.server,s&apos;.server,p,p&apos;,c,c&apos;]&#x000a;&#x0009;&#x0009;StateTransition[s,s&apos;]&#x000a;&#x0009;}*/&#x000a;&#x0009;//some s:StateOfServer, p:Page | CreateRepoPageINOK[s,p]&#x000a;}&#x000a;&#x000a;run Combo for 5&#x000a;&#x000a;//run GrantAccess for 3 but 0 StateOfBrowsers, 0 Browser, 0 State, 0 Page //0 UserAction&#x000a;//run { #DifficultyAssignment=2}&#x000a;"/>
+<source filename="/Users/delavaquay/Desktop/Research/Alloy/Alloy-Ex/NEWgithub.als" content="open util/boolean&#x000a;&#x000a;sig Repo { }&#x000a;sig UserAccount { }&#x000a;//abstract sig UserAction { }&#x000a;//sig LocalAction, ServerRequest extends UserAction { }&#x000a;//sig ServerTransition { }&#x000a;sig UserName { }&#x000a;sig Password { }&#x000a;sig StateOfServer {&#x000a;&#x0009;repos: set Repo,&#x000a;&#x0009;users: set UserAccount,&#x000a;&#x0009;cookies: set Cookie,&#x000a;&#x0009;usernames: set UserName,&#x000a;&#x0009;passwords: set Password,&#x000a;&#x0009;Identification: cookies -&gt; lone users,&#x000a;&#x0009;Authentication: usernames -&gt; passwords -&gt; lone users,&#x000a;&#x0009;Membership: repos -&gt; set users,&#x000a;&#x0009;Ownership: repos -&gt; one users,&#x000a;&#x0009;nextStates: set StateOfServer &#x000a;}&#x000a;&#x000a;fact {&#x000a;&#x0009;//all s: StateOfBrowsers, p: Page, u: UserAction | no d: s.DifficultyAssignment[p][u] | int d &lt; 1&#x000a;&#x0009;all s: StateOfServer, r: Repo {&#x000a;&#x0009;&#x0009;s.Ownership[r] != none &lt;=&gt; s.Membership[r] != none&#x000a;&#x0009;&#x0009;s.Ownership[r] != none &lt;=&gt; r in s.repos&#x000a;&#x0009;}&#x000a;&#x0009;all s: StateOfServer, r: s.repos, u: s.users | s.Ownership[r] = u implies u in s.Membership[r]&#x000a;&#x0009;all s: StateOfServer, r: s.repos | s.Ownership[r] in s.users and s.Membership[r] in s.users&#x000a;&#x0009;all s,s&apos;:StateOfServer {&#x000a;&#x0009;&#x0009;s&apos; in s.nextStates iff Transition[s,s&apos;]&#x000a;&#x0009;}&#x000a;&#x0009;all s,s&apos;:StateOfServer {&#x000a;&#x0009;&#x0009;s&apos; in s.*nextStates or s in s&apos;.*nextStates&#x000a;&#x000a;&#x0009;&#x0009;(s.Identification = s&apos;.Identification and&#x000a;&#x0009;&#x0009;s.Authentication = s&apos;.Authentication and&#x000a;&#x0009;&#x0009;s.Membership = s&apos;.Membership and&#x000a;&#x0009;&#x0009;s.Ownership = s&apos;.Ownership and&#x000a;&#x0009;&#x0009;s.cookies = s&apos;.cookies) =&gt; s=s&apos;&#x000a;&#x0009;}&#x000a;&#x0009;all s:StateOfServer, u: s.users {&#x000a;&#x0009;&#x0009;//some c:Cookie | s.Identification[c] = u&#x000a;&#x0009;&#x0009;some n:UserName, p:Password | s.Authentication[n][p] = u&#x000a;&#x0009;}&#x000a;&#x0009;all s:StateOfServer, p,p&apos;:Password, un,un&apos;:UserName {&#x000a;&#x0009;&#x0009;s.Authentication[un][p] = s.Authentication[un&apos;][p&apos;] =&gt; ((un = un&apos; and p = p&apos;) or s.Authentication[un][p] = none)&#x000a;&#x0009;&#x0009;s.Authentication[un][p] != s.Authentication[un&apos;][p&apos;] =&gt; &#x000a;&#x0009;&#x0009;(un != un&apos; or&#x000a;&#x0009;&#x0009;s.Authentication[un][p] = none or&#x000a;&#x0009;&#x0009;s.Authentication[un&apos;][p&apos;] = none)&#x000a;&#x0009;}&#x000a;&#x0009;//all s:StateOfServer, c,c&apos;:Cookie | s.Identification[c] = s.Identification[c&apos;] implies c=c&apos;&#x000a;}&#x000a;&#x000a;pred Transition[s,s&apos;:StateOfServer] {&#x000a;&#x0009;NoOp[s,s&apos;] or &#x000a;&#x0009;(some u:UserAccount, r:Repo {&#x000a;&#x0009;&#x0009;CreateRepo[s,s&apos;,u,r] or&#x000a;&#x0009;&#x0009;DeleteRepo[s,s&apos;,u,r]&#x000a;&#x0009;}) or&#x000a;&#x0009;(some u,u&apos;:UserAccount, r:Repo {&#x000a;&#x0009;&#x0009;GrantAccess[s,s&apos;,u,u&apos;,r] or&#x000a;&#x0009;&#x0009;RevokeAccess[s,s&apos;,u,u&apos;,r]&#x000a;&#x0009;}) or&#x000a;&#x0009;(some u:UserAccount, un:UserName, p:Password, c:Cookie {&#x000a;&#x0009;&#x0009;Login[s,s&apos;,u,un,p,c] or&#x000a;&#x0009;&#x0009;Logout[s,s&apos;,c]&#x000a;&#x0009;})&#x000a;}&#x000a;&#x000a;pred NoOp[s,s&apos;:StateOfServer] {&#x000a;&#x0009;s.Identification = s&apos;.Identification&#x000a;&#x0009;s.Authentication = s&apos;.Authentication&#x000a;&#x0009;s.Membership = s&apos;.Membership&#x000a;&#x0009;s.Ownership = s&apos;.Ownership &#x000a;&#x0009;s.cookies = s&apos;.cookies&#x000a;}&#x000a;&#x000a;pred CreateRepo[s,s&apos;:StateOfServer, u:UserAccount, r:Repo] {&#x000a;&#x0009;s.Identification = s&apos;.Identification&#x000a;&#x0009;s.Authentication = s&apos;.Authentication&#x000a;&#x0009;!(r in s.repos)&#x000a;&#x0009;s&apos;.Membership = s.Membership + (r -&gt; u)&#x000a;&#x0009;s&apos;.Ownership = s.Ownership + (r -&gt; u) &#x000a;&#x0009;s.cookies = s&apos;.cookies&#x000a;}&#x000a;&#x000a;pred DeleteRepo[s,s&apos;:StateOfServer, u:UserAccount, r:Repo] {&#x000a;&#x0009;s.Identification = s&apos;.Identification&#x000a;&#x0009;s.Authentication = s&apos;.Authentication&#x000a;&#x0009;!(r in s&apos;.repos)&#x000a;&#x0009;s.Membership = s&apos;.Membership + (r -&gt; u)&#x000a;&#x0009;s.Ownership = s&apos;.Ownership + (r -&gt; u) &#x000a;&#x0009;s.cookies = s&apos;.cookies&#x000a;}&#x000a;&#x000a;pred GrantAccess[s,s&apos;:StateOfServer, o,u:UserAccount, r:Repo] {&#x000a;&#x0009;s.Identification = s&apos;.Identification&#x000a;&#x0009;s.Authentication = s&apos;.Authentication&#x000a;&#x0009;s.Ownership = s&apos;.Ownership&#x000a;&#x0009;s.Ownership[r] = o&#x000a;&#x0009;s&apos;.Membership = s.Membership + (r -&gt; u)&#x000a;&#x0009;!(u in s.Membership[r])&#x000a;&#x0009;s.cookies = s&apos;.cookies&#x000a;}&#x000a;&#x000a;pred RevokeAccess[s,s&apos;:StateOfServer, o,u:UserAccount, r:Repo] {&#x000a;&#x0009;s.Identification = s&apos;.Identification&#x000a;&#x0009;s.Authentication = s&apos;.Authentication&#x000a;&#x0009;s.Ownership = s&apos;.Ownership&#x000a;&#x0009;s.Ownership[r] = o&#x000a;&#x0009;s.Membership = s&apos;.Membership + (r -&gt; u)&#x000a;&#x0009;!(u in s&apos;.Membership[r])&#x000a;&#x0009;s.cookies = s&apos;.cookies&#x000a;}&#x000a;&#x000a;pred Login[s,s&apos;:StateOfServer, u:UserAccount, un:UserName, p:Password, c:Cookie] {&#x000a;&#x0009;s.Authentication = s&apos;.Authentication&#x000a;&#x0009;s.Ownership = s&apos;.Ownership&#x000a;&#x0009;s.Membership = s&apos;.Membership&#x000a;&#x0009;(un -&gt; p -&gt; u) in s.Authentication&#x000a;&#x0009;!(c in s.cookies)&#x000a;&#x0009;s.cookies+c=s&apos;.cookies&#x000a;&#x0009;s.Identification + (c -&gt; u) = s&apos;.Identification&#x000a;}&#x000a;&#x000a;pred Logout[s,s&apos;:StateOfServer, c:Cookie] {&#x000a;&#x0009;s.Authentication = s&apos;.Authentication&#x000a;&#x0009;s.Ownership = s&apos;.Ownership&#x000a;&#x0009;s.Membership = s&apos;.Membership&#x000a;&#x0009;all u&apos;:s&apos;.users | !((c -&gt; u&apos;) in s&apos;.Identification)&#x000a;&#x0009;some u:s.users |&#x0009;s&apos;.Identification + (c -&gt; u) = s.Identification&#x000a;&#x0009;s.cookies = s&apos;.cookies&#x000a;}&#x000a;&#x000a;sig Browser { }&#x000a;sig Cookie { }&#x000a;sig StateOfBrowsers {&#x000a;&#x0009;browsers: set Browser,&#x000a;&#x0009;pages: set Page,&#x000a;&#x0009;cookies: set Cookie,&#x000a;&#x0009;&#x000a;&#x0009;CurrentBrowserPages: browsers -&gt; set pages,&#x000a;&#x0009;CurrentBrowserCookie: browsers -&gt; lone cookies,&#x000a;&#x0009;//DifficultyAssignment: Page -&gt; Page -&gt; one Int,&#x000a;&#x0009;//Discoverability: Page -&gt; Page -&gt; one Bool&#x000a;}&#x000a;&#x000a;fact {&#x000a;&#x0009;//all pages in a state belong to a browser&#x000a;&#x0009;all s:StateOfBrowsers, p: s.pages {&#x000a;&#x0009;&#x0009;some b:Browser {&#x000a;&#x0009;&#x0009;&#x0009;b in s.browsers&#x000a;&#x0009;&#x0009;&#x0009;p in s.CurrentBrowserPages[b]&#x000a;&#x0009;&#x0009;}&#x000a;&#x0009;}&#x000a;&#x0009;all s:StateOfBrowsers, p:s.pages, b,b&apos;:s.browsers {&#x000a;&#x0009;&#x0009;p in s.CurrentBrowserPages[b] and p in s.CurrentBrowserPages[b&apos;] =&gt; b = b&apos;&#x000a;&#x0009;}&#x000a;&#x0009;all s:StateOfBrowsers, b,b&apos;:s.browsers {&#x000a;&#x0009;&#x0009;s.CurrentBrowserCookie[b] = s.CurrentBrowserCookie[b&apos;] =&gt; (b = b&apos; or s.CurrentBrowserCookie[b] = none)&#x000a;&#x0009;}&#x000a;}&#x000a;&#x000a;abstract sig Page { }&#x000a;sig LoggedInMainPage extends Page { }&#x000a;pred LoggedInMainPageOK[s:StateOfServer, p:Page] {&#x000a;&#x0009;p in LoggedInMainPage&#x000a;}&#x000a;sig MyReposPage extends Page {&#x000a;&#x0009; myRepos: set Repo&#x000a;}&#x000a;pred MyReposPageOK[s:StateOfServer, p:Page, c:Cookie] {&#x000a;&#x0009;p in MyReposPage&#x000a;&#x0009;let u = s.Identification[c] {&#x000a;&#x0009;&#x0009;u != none&#x000a;&#x0009;&#x0009;all r:Repo | r in p.myRepos &lt;=&gt; u in s.Membership[r]&#x000a;&#x0009;}&#x000a;}&#x000a;&#x000a;abstract sig CreateRepoPage extends Page { }&#x000a;sig CreateRepoPageVN, CreateRepoPageIN, CreateRepoPageNN extends CreateRepoPage { }//valid name, invalid name, no name&#x000a;pred CreateRepoPageVNOK[s:StateOfServer,p:Page] {&#x000a;&#x0009;p in CreateRepoPageVN&#x000a;}&#x000a;pred CreateRepoPageINOK[s:StateOfServer,p:Page] {&#x000a;&#x0009;p in CreateRepoPageIN&#x000a;}&#x000a;pred CreateRepoPageNNOK[s:StateOfServer,p:Page] {&#x000a;&#x0009;p in CreateRepoPageNN&#x000a;}&#x000a;&#x000a;sig LoginPage extends Page { }&#x000a;pred LoginPageOK[s:StateOfServer, p:Page] {&#x000a;&#x0009;p in LoginPage&#x000a;}&#x000a;&#x000a;abstract sig RepoPage extends Page {&#x000a;&#x0009;repo: one Repo&#x000a;}&#x000a;pred RepoPageOK[s:StateOfServer, p:Page, r:Repo] {&#x000a;&#x0009;p in RepoPage&#x000a;&#x0009;p.repo = r&#x000a;&#x0009;r in s.repos&#x000a;}&#x000a;&#x000a;sig RepoOwnerPage extends RepoPage { }&#x000a;sig RepoMemberPage extends RepoPage { }&#x000a;&#x000a;sig CollaboratorPage extends Page {&#x000a;&#x0009;cRepo: one Repo,&#x000a;&#x0009;collaborators: set UserAccount&#x000a;}&#x000a;pred CollaboratorPageOK[s:StateOfServer, p:Page, r:Repo] {&#x000a;&#x0009;p in CollaboratorPage&#x000a;&#x0009;p.cRepo = r&#x000a;&#x0009;p.cRepo in s.repos&#x000a;&#x0009;p.collaborators = s.Membership[r]&#x000a;}&#x000a;&#x000a;/////////////////////////////////&#x000a;----------------------------&#x000a;/////////////////////////////////&#x000a;&#x000a;/*sig LoginWithErrorPage extends Page { }&#x000a;pred LoginWithErrorPageOK[s:StateOfServer, p:Page] {&#x000a;&#x0009;p in LoginPage&#x000a;}*/&#x000a;&#x000a;&#x000a;sig NotFoundErrorPage extends Page { }&#x000a;&#x000a;sig OtherErrorPage extends Page { }&#x000a;&#x000a;/////////////////////////////////&#x000a;----------------------------&#x000a;/////////////////////////////////&#x000a;&#x000a;&#x000a;pred LoginLink[ss,ss&apos;:StateOfServer, p,p&apos;:Page, c,c&apos;:Cookie, t: Type] {&#x000a;&#x0009;t = LoginType&#x000a;&#x0009;p in LoginPage&#x000a;&#x0009;let u = ss.Identification[c] {&#x000a;&#x0009;&#x0009;u != none implies {&#x000a;&#x0009;&#x0009;&#x0009;NoOp[ss,ss&apos;]&#x000a;&#x0009;&#x0009;&#x0009;c = c&apos;&#x000a;&#x0009;&#x0009;&#x0009;p&apos; in LoggedInMainPage&#x000a;&#x0009;&#x0009;}&#x000a;&#x0009;&#x0009;u = none implies {&#x000a;&#x0009;&#x0009;&#x0009;({&#x000a;&#x0009;&#x0009;&#x0009;&#x0009;some un:UserName, p:Password, u:UserAccount {&#x000a;&#x0009;&#x0009;&#x0009;&#x0009;&#x0009;Login[ss,ss&apos;,u,un,p,c&apos;]&#x000a;&#x0009;&#x0009;&#x0009;&#x0009;&#x0009;p&apos; in LoggedInMainPage&#x000a;&#x0009;&#x0009;&#x0009;&#x0009;}&#x000a;&#x0009;&#x0009;&#x0009;}) or&#x000a;&#x0009;&#x0009;&#x0009;({&#x000a;&#x0009;&#x0009;&#x0009;&#x0009;c=c&apos;&#x000a;&#x0009;&#x0009;&#x0009;&#x0009;NoOp[ss,ss&apos;]&#x000a;&#x0009;&#x0009;&#x0009;&#x0009;p&apos; in LoginPage //LoginErrorPage&#x000a;&#x0009;&#x0009;&#x0009;})&#x000a;&#x0009;&#x0009;}&#x000a;&#x0009;}&#x000a;}&#x000a;&#x000a;pred LogoutLink[ss,ss&apos;:StateOfServer, p&apos;:Page, c,c&apos;:lone Cookie, t: Type] {&#x000a;&#x0009;t = LogoutType&#x000a;&#x0009;p&apos; in LoginPage&#x000a;&#x0009;c&apos; = none&#x000a;&#x0009;Logout[ss,ss&apos;,c]&#x000a;}&#x000a;&#x000a;pred CreateRepoPageNNLink[ss,ss&apos;:StateOfServer, p,p&apos;:Page, c,c&apos;:lone Cookie, t: Type] {&#x000a;&#x0009;t = CreateRepoPageNNType&#x000a;&#x0009;NoOp[ss,ss&apos;]&#x000a;&#x0009;CreateRepoPageNNOK[ss&apos;,p&apos;]&#x000a;&#x0009;p in MyReposPage + LoggedInMainPage&#x000a;&#x0009;ss.Identification[c] != none&#x000a;&#x0009;c = c&apos;&#x000a;}&#x000a;&#x000a;pred CreateRepoPageNameLink[ss,ss&apos;:StateOfServer, p,p&apos;:Page, c,c&apos;:lone Cookie, t: Type] {&#x000a;&#x0009;t = CreateRepoPageNameType&#x000a;&#x0009;NoOp[ss,ss&apos;]&#x000a;&#x0009;CreateRepoPageINOK[ss&apos;,p&apos;] or CreateRepoPageVNOK[ss&apos;,p&apos;]&#x000a;&#x0009;p in CreateRepoPage&#x000a;&#x0009;ss.Identification[c] != none&#x000a;&#x0009;c = c&apos;&#x000a;}&#x000a;&#x000a;//goes to repo page and creates a new repo&#x000a;pred CreateRepoSuccessLink[ss,ss&apos;:StateOfServer, p,p&apos;:Page, c,c&apos;:lone Cookie, t: Type] {&#x000a;&#x0009;t = CreateRepoSuccessType&#x000a;&#x0009;some r:Repo {&#x000a;&#x0009;&#x0009;let u = ss.Identification[c] {&#x000a;&#x0009;&#x0009;&#x0009;CreateRepo[ss,ss&apos;,u,r]&#x000a;&#x0009;&#x0009;&#x0009;p in CreateRepoPageVN&#x000a;&#x0009;&#x0009;&#x0009;RepoPageOK[ss&apos;,p&apos;,r]&#x000a;&#x0009;&#x0009;}&#x000a;&#x0009;}&#x000a;&#x0009;c = c&apos;&#x000a;}&#x000a;&#x000a;pred LoggedInMainPageLink[ss,ss&apos;:StateOfServer, p&apos;:Page, c,c&apos;:lone Cookie, t: Type] {&#x000a;&#x0009;t = LoggedInMainPageType&#x000a;&#x0009;LoggedInMainPageOK[ss&apos;,p&apos;]&#x000a;&#x0009;NoOp[ss,ss&apos;]&#x000a;&#x0009;ss.Identification[c] != none&#x000a;&#x0009;c = c&apos;&#x000a;}&#x000a;&#x000a;pred MyReposPageLink[ss,ss&apos;:StateOfServer, p&apos;:Page, c,c&apos;:lone Cookie, t: Type] {&#x000a;&#x0009;t = MyReposPageType&#x000a;&#x0009;NoOp[ss,ss&apos;]&#x000a;&#x0009;c=c&apos;&#x000a;&#x0009;MyReposPageOK[ss&apos;,p&apos;,c]&#x000a;&#x0009;ss.Identification[c] != none&#x000a;}&#x000a;&#x000a;pred RepoPageLink[ss,ss&apos;:StateOfServer, p,p&apos;:Page, r:Repo, c,c&apos;:lone Cookie, t: Type] {&#x000a;&#x0009;NoOp[ss,ss&apos;]&#x000a;&#x0009;let u = ss.Identification[c] {&#x000a;&#x0009;&#x0009;(p in LoggedInMainPage and t = ClickRepoPageType) or (p in MyReposPage and r in p.myRepos and t = SearchRepoPageType)&#x000a;&#x0009;&#x0009;({&#x000a;&#x0009;&#x0009;&#x0009;u != none&#x000a;&#x0009;&#x0009;&#x0009;RepoPageOK[ss&apos;,p&apos;,r]&#x000a;&#x0009;&#x0009;&#x0009;(u in ss.Ownership[p&apos;.repo] and p&apos; in RepoOwnerPage) or&#x000a;&#x0009;&#x0009;&#x0009;(u in ss.Membership[p&apos;.repo] and !(u in ss.Ownership[p&apos;.repo]) and p&apos; in RepoMemberPage)&#x000a;&#x0009;&#x0009;}) or&#x000a;&#x0009;&#x0009;!(u in ss.Membership[r]) and LoggedInMainPageOK[ss&apos;,p&apos;] //FIXME: should go to permissions error page&#x000a;&#x0009;}&#x000a;&#x0009;c = c&apos;&#x000a;}&#x000a;&#x000a;pred CollaboratorLink[ss,ss&apos;:StateOfServer, p,p&apos;:Page, r:Repo, c,c&apos;:lone Cookie, t: Type] {&#x000a;&#x0009;t = CollaboratorType&#x000a;&#x0009;NoOp[ss,ss&apos;]&#x000a;&#x0009;p in RepoOwnerPage&#x000a;&#x0009;p.repo = r&#x000a;&#x0009;CollaboratorPageOK[ss&apos;,p&apos;,r]&#x000a;&#x0009;c = c&apos;&#x000a;&#x0009;ss.Identification[c] != none&#x000a;&#x0009;ss.Identification[c] in ss.Ownership[r]&#x000a;}&#x000a;&#x000a;pred AddCollaboratorLink[ss,ss&apos;:StateOfServer, p,p&apos;:Page, r:Repo, c,c&apos;:lone Cookie, t: Type] {&#x000a;&#x0009;t = AddCollaboratorType&#x000a;&#x0009;p in CollaboratorPage&#x000a;&#x0009;p.cRepo = r&#x000a;&#x0009;CollaboratorPageOK[ss&apos;,p&apos;,r]&#x000a;&#x0009;c = c&apos;&#x000a;&#x0009;some u:UserAccount {&#x000a;&#x0009;&#x0009;!(u in ss.Membership[r])&#x000a;&#x0009;&#x0009;GrantAccess[ss,ss&apos;,ss.Identification[c],u,r]&#x000a;&#x0009;}&#x000a;}&#x000a;&#x000a;pred RemoveCollaboratorLink[ss,ss&apos;:StateOfServer, p,p&apos;:Page, r:Repo, c,c&apos;:lone Cookie, t: Type] {&#x000a;&#x0009;t = RemoveCollaboratorType&#x000a;&#x0009;p in CollaboratorPage&#x000a;&#x0009;p.cRepo = r&#x000a;&#x0009;CollaboratorPageOK[ss&apos;,p&apos;,r]&#x000a;&#x0009;c = c&apos;&#x000a;&#x0009;some u:p.collaborators {&#x000a;&#x0009;&#x0009;RevokeAccess[ss,ss&apos;,ss.Identification[c],u,r]&#x000a;&#x0009;}&#x000a;}&#x000a;&#x000a;pred DeleteRepoLink[ss,ss&apos;:StateOfServer, p,p&apos;:Page, r:Repo, c,c&apos;:lone Cookie, t: Type] {&#x000a;&#x0009;t = DeleteRepoType&#x000a;&#x0009;p in RepoOwnerPage&#x000a;&#x0009;p.repo = r&#x000a;&#x0009;MyReposPageOK[ss&apos;,p&apos;,c]&#x000a;&#x0009;c = c&apos;&#x000a;&#x0009;DeleteRepo[ss,ss&apos;,ss.Identification[c],r]&#x000a;}&#x000a;&#x000a;pred StateTransition[s,s&apos;:State, b:s.browser.browsers, t:Type] {&#x000a;&#x0009;some p:s.browser.pages,p&apos;:s&apos;.browser.pages {&#x000a;&#x0009;&#x0009;ServerRequest[s,s&apos;,p,p&apos;,b,t]&#x000a;&#x0009;}&#x000a;}&#x000a;&#x000a;pred ServerRequest[s,s&apos;:State,p,p&apos;:Page,b:Browser,t:Type] {&#x000a;&#x0009;s.browser.browsers = s&apos;.browser.browsers&#x000a;&#x0009;s.browser.CurrentBrowserPages - (b-&gt;p) + (b-&gt;p&apos;) = s&apos;.browser.CurrentBrowserPages&#x000a;&#x0009;p in s.browser.CurrentBrowserPages[b]&#x000a;&#x0009;!(p&apos; in s.browser.CurrentBrowserPages[b])&#x000a;&#x0009;let c = s.browser.CurrentBrowserCookie[b],&#x000a;&#x0009;&#x0009;&#x0009;c&apos; = s&apos;.browser.CurrentBrowserCookie[b] {&#x000a;&#x0009;&#x0009;s.browser.CurrentBrowserCookie - (b -&gt; c) + (b -&gt; c&apos;) = s&apos;.browser.CurrentBrowserCookie&#x000a;&#x0009;&#x0009;LoggedInMainPageLink[s.server, s&apos;.server, p&apos;, c, c&apos;, t] or &#x000a;&#x0009;&#x0009;CreateRepoSuccessLink[s.server, s&apos;.server, p, p&apos;, c, c&apos;, t] or&#x000a;&#x0009;&#x0009;CreateRepoPageNNLink[s.server, s&apos;.server, p, p&apos;, c, c&apos;, t] or&#x000a;&#x0009;&#x0009;MyReposPageLink[s.server, s&apos;.server, p&apos;,c,c&apos;, t] or&#x000a;&#x0009;&#x0009;CreateRepoPageNameLink[s.server, s&apos;.server, p, p&apos;, c, c&apos;, t] or&#x000a;&#x0009;&#x0009;LoginLink[s.server, s&apos;.server, p,p&apos;,c,c&apos;, t] or&#x000a;&#x0009;&#x0009;LogoutLink[s.server, s&apos;.server, p&apos;, c,c&apos;, t] or&#x000a;&#x0009;&#x0009;(some r:Repo {&#x000a;&#x0009;&#x0009;&#x0009;RepoPageLink[s.server, s&apos;.server, p, p&apos;, r, c, c&apos;, t] or&#x000a;&#x0009;&#x0009;&#x0009;CollaboratorLink[s.server, s&apos;.server, p, p&apos;, r, c, c&apos;, t] or&#x000a;&#x0009;&#x0009;&#x0009;AddCollaboratorLink[s.server, s&apos;.server, p, p&apos;, r, c, c&apos;, t] or&#x000a;&#x0009;&#x0009;&#x0009;RemoveCollaboratorLink[s.server, s&apos;.server, p, p&apos;, r, c, c&apos;, t] or&#x000a;&#x0009;&#x0009;&#x0009;DeleteRepoLink[s.server, s&apos;.server, p,p&apos;, r, c, c&apos;, t]&#x000a;&#x0009;&#x0009;})&#x000a;&#x0009;}&#x000a;}&#x000a;&#x000a;abstract sig Type { } &#x000a;one sig LoggedInMainPageType, CreateRepoSuccessType, CreateRepoPageNNType,&#x000a;&#x0009;&#x0009;MyReposPageType, CreateRepoPageNameType, LoginType, LogoutType, &#x000a;&#x0009;&#x0009;ClickRepoPageType, SearchRepoPageType, CollaboratorType, AddCollaboratorType,&#x000a;&#x0009;&#x0009;RemoveCollaboratorType, DeleteRepoType extends Type { }&#x000a;&#x000a;sig State {&#x000a;&#x0009;browser: one StateOfBrowsers,&#x000a;&#x0009;server: one StateOfServer,&#x000a;&#x0009;nextState: State -&gt; Browser -&gt; Type }&#x000a;&#x000a;fact {&#x000a;&#x0009;all s,s&apos;:State|s.browser = s&apos;.browser and s.server = s&apos;.server implies s=s&apos;&#x000a;&#x0009;all s,s&apos;:State, b: Browser, t: Type {&#x000a;&#x0009;&#x0009;s-&gt;s&apos;-&gt;b-&gt;t in nextState iff StateTransition[s,s&apos;,b,t]&#x000a;&#x0009;&#x0009;s in s&apos;.*(nextState.Type.Browser) or s&apos; in s.*(nextState.Type.Browser)&#x000a;&#x0009;}&#x000a;&#x0009;all sb:StateOfBrowsers | some s:State | sb = s.browser&#x000a;&#x0009;all ss:StateOfServer | some s:State | ss = s.server&#x000a;&#x0009;all s:State | s.server.cookies = s.browser.cookies&#x000a;}&#x000a;&#x000a;pred Combo {&#x000a;&#x0009;//some p,p&apos;:Password | p != p&apos;&#x000a;&#x0009;/*some s,s&apos;:State, p,p&apos;:Page, r:Repo, c,c&apos;:Cookie {&#x000a;&#x0009;&#x0009;p in s.browser.pages&#x000a;&#x0009;&#x0009;p&apos; in s&apos;.browser.pages&#x000a;&#x0009;&#x0009;CollaboratorLink[s.server,s&apos;.server,p,p&apos;,r,c,c&apos;]&#x000a;&#x0009;&#x0009;StateTransition[s,s&apos;]&#x000a;&#x0009;}&#x000a;&#x0009;some s,s&apos;:State, p,p&apos;:Page, r:Repo, c,c&apos;:Cookie {&#x000a;&#x0009;&#x0009;p in s.browser.pages&#x000a;&#x0009;&#x0009;p&apos; in s&apos;.browser.pages&#x000a;&#x0009;&#x0009;AddCollaboratorLink[s.server,s&apos;.server,p,p&apos;,r,c,c&apos;]&#x000a;&#x0009;&#x0009;StateTransition[s,s&apos;]&#x000a;&#x0009;}&#x000a;&#x0009;some s,s&apos;:State, p,p&apos;:Page, r:Repo, c,c&apos;:Cookie {&#x000a;&#x0009;&#x0009;p in s.browser.pages&#x000a;&#x0009;&#x0009;p&apos; in s&apos;.browser.pages&#x000a;&#x0009;&#x0009;RemoveCollaboratorLink[s.server,s&apos;.server,p,p&apos;,r,c,c&apos;]&#x000a;&#x0009;&#x0009;StateTransition[s,s&apos;]&#x000a;&#x0009;}*/&#x000a;&#x0009;some s,s&apos;:State, p,p&apos;:Page, r:Repo, c,c&apos;:Cookie, b: Browser, t:Type {&#x000a;&#x0009;&#x0009;p in s.browser.pages&#x000a;&#x0009;&#x0009;p&apos; in s&apos;.browser.pages&#x000a;&#x0009;&#x0009;DeleteRepoLink[s.server,s&apos;.server,p,p&apos;,r,c,c&apos;, t]&#x000a;&#x0009;&#x0009;StateTransition[s,s&apos;, b, t]&#x000a;&#x0009;}&#x000a;&#x0009;/*some s,s&apos;:State, p:Page, p&apos;:RepoPage, r:Repo, c,c&apos;:Cookie {&#x000a;&#x0009;&#x0009;p in s.browser.pages&#x000a;&#x0009;&#x0009;p&apos; in s&apos;.browser.pages&#x000a;&#x0009;&#x0009;RepoPageLink[s.server,s&apos;.server,p,p&apos;,r,c,c&apos;]&#x000a;&#x0009;&#x0009;StateTransition[s,s&apos;]&#x000a;&#x0009;}*/&#x000a;&#x0009;/*some s,s&apos;:State, p,p&apos;:Page, c,c&apos;:Cookie {&#x000a;&#x0009;&#x0009;p in s.browser.pages&#x000a;&#x0009;&#x0009;p&apos; in s&apos;.browser.pages&#x000a;&#x0009;&#x0009;some b:Browser {&#x000a;&#x0009;&#x0009;&#x0009;ServerRequest[s, s&apos;, p, p&apos;, b]&#x000a;&#x0009;&#x0009;}&#x000a;&#x0009;&#x0009;MyReposPageLink[s.server,s&apos;.server,p&apos;,c,c&apos;]&#x000a;&#x0009;&#x0009;StateTransition[s,s&apos;]&#x000a;&#x0009;}*/&#x000a;&#x000a;&#x0009;/*some s,s&apos;:State, p:Page, p&apos;:Page, c,c&apos;:Cookie {&#x000a;&#x0009;&#x0009;p in s.browser.pages&#x000a;&#x0009;&#x0009;p&apos; in s&apos;.browser.pages&#x000a;&#x0009;&#x0009;some b:Browser {&#x000a;&#x0009;&#x0009;&#x0009;ServerRequest[s, s&apos;, p, p&apos;, b]&#x000a;&#x0009;&#x0009;}&#x000a;&#x0009;&#x0009;LoginLink[s.server,s&apos;.server,p,p&apos;,c,c&apos;]&#x000a;&#x0009;&#x0009;StateTransition[s,s&apos;]&#x000a;&#x0009;}*/&#x000a;&#x0009;/*some s,s&apos;:State, p,p&apos;:Page, c:Cookie,c&apos;:lone Cookie {&#x000a;&#x0009;&#x0009;p in s.browser.pages&#x000a;&#x0009;&#x0009;p&apos; in s&apos;.browser.pages&#x000a;&#x0009;&#x0009;some b:Browser {&#x000a;&#x0009;&#x0009;&#x0009;ServerRequest[s, s&apos;, p, p&apos;, b]&#x000a;&#x0009;&#x0009;}&#x000a;&#x0009;&#x0009;LogoutLink[s.server,s&apos;.server,p&apos;,c,c&apos;]&#x000a;&#x0009;&#x0009;StateTransition[s,s&apos;]&#x000a;&#x0009;}*/&#x000a;&#x000a;/*&#x000a;&#x0009;some s,s&apos;:State, p,p&apos;:Page, c,c&apos;:Cookie {&#x000a;&#x0009;&#x0009;p in s.browser.pages&#x000a;&#x0009;&#x0009;p&apos; in s&apos;.browser.pages&#x000a;&#x0009;&#x0009;CreateRepoSuccessLink[s.server,s&apos;.server,p,p&apos;,c,c&apos;]&#x000a;&#x0009;&#x0009;StateTransition[s,s&apos;]&#x000a;&#x0009;}&#x000a;&#x0009;some s,s&apos;:State, p,p&apos;:Page, c,c&apos;:Cookie {&#x000a;&#x0009;&#x0009;p in s.browser.pages&#x000a;&#x0009;&#x0009;p&apos; in s&apos;.browser.pages&#x000a;&#x0009;&#x0009;CreateRepoPageNNLink[s.server,s&apos;.server,p,p&apos;,c,c&apos;]&#x000a;&#x0009;&#x0009;StateTransition[s,s&apos;]&#x000a;&#x0009;}&#x000a;&#x0009;some s,s&apos;:State, p,p&apos;:Page, c,c&apos;:Cookie {&#x000a;&#x0009;&#x0009;p in s.browser.pages&#x000a;&#x0009;&#x0009;p&apos; in s&apos;.browser.pages&#x000a;&#x0009;&#x0009;CreateRepoPageNameLink[s.server,s&apos;.server,p,p&apos;,c,c&apos;]&#x000a;&#x0009;&#x0009;StateTransition[s,s&apos;]&#x000a;&#x0009;}*/&#x000a;&#x0009;//some s:StateOfServer, p:Page | CreateRepoPageINOK[s,p]&#x000a;}&#x000a;&#x000a;run Combo for 5&#x000a;&#x000a;//run GrantAccess for 3 but 0 StateOfBrowsers, 0 Browser, 0 State, 0 Page //0 UserAction&#x000a;//run { #DifficultyAssignment=2}&#x000a;"/>
 
 <source filename="/$alloy4$/models/util/integer.als" content="module util/integer&#x000a;&#x000a;/*&#x000a; * A collection of utility functions for using Integers in Alloy.&#x000a; * Note that integer overflows are silently truncated to the current bitwidth&#x000a; * using the 2&apos;s complement arithmetic.&#x000a; */&#x000a;&#x000a;fun add  [n1, n2: Int] : Int { this/plus[n1, n2] }&#x000a;fun plus [n1, n2: Int] : Int { n1 fun/add n2 }&#x000a;&#x000a;fun sub   [n1, n2: Int] : Int { this/minus[n1, n2] }&#x000a;fun minus [n1, n2: Int] : Int { n1 fun/sub n2 }&#x000a;&#x000a;fun mul [n1, n2: Int] : Int { n1 fun/mul n2 }&#x000a;&#x000a;// Performs the division with &quot;round to zero&quot; semantics, except the following 3 cases&#x000a;// 1) if a is 0, then it returns 0&#x000a;// 2) else if b is 0, then it returns 1 if a is negative and -1 if a is positive&#x000a;// 3) else if a is the smallest negative integer, and b is -1, then it returns a&#x000a;fun div [n1, n2: Int] : Int { n1 fun/div n2 }&#x000a;&#x000a;// answer is defined to be the unique integer that satisfies &quot;a = ((a/b)*b) + remainder&quot;&#x000a;fun rem [n1, n2: Int] : Int { n1 fun/rem n2 }&#x000a;&#x000a;/* negate */&#x000a;fun negate [n: Int] : Int { 0 fun/sub n }&#x000a;&#x000a;/* equal to */&#x000a;pred eq [n1, n2: Int] { int[n1] = int[n2] }&#x000a;&#x000a;/* greater than */&#x000a;pred gt [n1, n2: Int] { n1 &gt; n2 }&#x000a;&#x000a;/* less then */&#x000a;pred lt [n1, n2: Int] { n1 &lt; n2 }&#x000a;&#x000a;/* greater than or equal */&#x000a;pred gte [n1, n2: Int] { n1 &gt;= n2 }&#x000a;&#x000a;/* less than or equal */&#x000a;pred lte [n1, n2: Int] { n1 &lt;= n2 }&#x000a;&#x000a;/* integer is zero */&#x000a;pred zero [n: Int] { n = 0 }&#x000a;&#x000a;/* positive */&#x000a;pred pos  [n: Int] { n &gt; 0 }&#x000a;&#x000a;/* negative */&#x000a;pred neg  [n: Int] { n &lt; 0 }&#x000a;&#x000a;/* non-positive */&#x000a;pred nonpos [n: Int] { n &lt;= 0 }&#x000a;&#x000a;/* non-negative */&#x000a;pred nonneg [n: Int] { n &gt;= 0 }&#x000a;&#x000a;/* signum (aka sign or sgn) */&#x000a;fun signum [n: Int] : Int { n&lt;0 =&gt; (0 fun/sub 1) else (n&gt;0 =&gt; 1 else 0) }&#x000a;&#x000a;/*&#x000a; * returns the ith element (zero-based) from the set s&#x000a; * in the ordering of &apos;next&apos;, which is a linear ordering&#x000a; * relation like that provided by util/ordering&#x000a; */&#x000a;fun int2elem[i: Int, next: univ-&gt;univ, s: set univ] : lone s {&#x000a;  {e: s | #^next.e = int i }&#x000a;}&#x000a;&#x000a;/*&#x000a; * returns the index of the element (zero-based) in the&#x000a; * ordering of next, which is a linear ordering relation&#x000a; * like that provided by util/ordering&#x000a; */&#x000a;fun elem2int[e: univ, next: univ-&gt;univ] : lone Int {&#x000a;  Int[#^next.e]&#x000a;}&#x000a;&#x000a;// returns the largest integer in the current bitwidth&#x000a;fun max:one Int { fun/max }&#x000a;&#x000a;// returns the smallest integer in the current bitwidth&#x000a;fun min:one Int { fun/min }&#x000a;&#x000a;// maps each integer (except max) to the integer after it&#x000a;fun next:Int-&gt;Int { fun/next }&#x000a;&#x000a;// maps each integer (except min) to the integer before it&#x000a;fun prev:Int-&gt;Int { ~next }&#x000a;&#x000a;// given a set of integers, return the largest element&#x000a;fun max [es: set Int]: lone Int { es - es.^prev }&#x000a;&#x000a;// given a set of integers, return the smallest element&#x000a;fun min [es: set Int]: lone Int { es - es.^next }&#x000a;&#x000a;// given an integer, return all integers prior to it&#x000a;fun prevs [e: Int]: set Int { e.^prev }&#x000a;&#x000a;// given an integer, return all integers following it&#x000a;fun nexts [e: Int]: set Int { e.^next }&#x000a;&#x000a;// returns the larger of the two integers&#x000a;fun larger [e1, e2: Int]: Int { let a=int[e1], b=int[e2] | (a&lt;b =&gt; b else a) }&#x000a;&#x000a;// returns the smaller of the two integers&#x000a;fun smaller [e1, e2: Int]: Int { let a=int[e1], b=int[e2] | (a&lt;b =&gt; a else b) }&#x000a;"/>
 
