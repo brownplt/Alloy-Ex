@@ -70,27 +70,12 @@
 (def discoverabilities
      #{["LoggedInMainPage" "MyReposPage"]
        ["MyReposPage" "RepoMemberPage"]
-       ["MyReposPage" "RepoOwnerPage"]
-       })
+       ["MyReposPage" "RepoOwnerPage"]})
 
 (defn discoverable? [p1 p2]
-  (let [t1 (object-type p1)
-        t2 (object-type p2)]
-    (not (not
-          (case t2
-                "LoggedInMainPage" true
-                "LoginPage" true
-                "CreateRepoPageNN" true #_ (#{"MyReposPage" "LoggedInMainPage"} t1)
-                "CreateRepoPageIN" true #_ (#{"CreateRepoPageNN" "CreateRepoPageIN" "CreateRepoPageVN"} t1)
-                "CreateRepoPageVN" true #_ (#{"CreateRepoPageNN" "CreateRepoPageIN" "CreateRepoPageVN"} t1)
-                "MyReposPage" true
-                "RepoMemberPage" (#{"MyReposPage"} t1)
-                "RepoOwnerPage" (#{"MyReposPage" "CreateRepoVN"} t1)
-                "CollaboratorPage" true #_ (#{"RepoOwnerPage" "CollaboratorPage"} t1)
-                false))))
-  #_ (not (not
-           (discoverabilities [(object-type p1)
-                               (object-type p2)]))))
+  (not (not
+        (discoverabilities [(object-type p1)
+                            (object-type p2)]))))
 #_ ({:tag :sig,
      :attrs {:label "this/Repo", :ID "4", :parentID "2"},
      :content [{:tag :atom, :attrs {:label "Repo$0"}, :content nil}
