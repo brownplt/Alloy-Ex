@@ -239,7 +239,8 @@ sig OtherErrorPage extends Page { }
 /////////////////////////////////
 
 
-pred LoginLink[ss,ss':StateOfServer, p,p':Page, c,c':Cookie] {
+pred LoginLink[ss,ss':StateOfServer, p,p':Page, c,c':Cookie, t: Type] {
+	t = LoginType
 	p in LoginPage
 	let u = ss.Identification[c] {
 		u != none implies {
@@ -263,13 +264,15 @@ pred LoginLink[ss,ss':StateOfServer, p,p':Page, c,c':Cookie] {
 	}
 }
 
-pred LogoutLink[ss,ss':StateOfServer, p':Page, c,c':lone Cookie] {
+pred LogoutLink[ss,ss':StateOfServer, p':Page, c,c':lone Cookie, t: Type] {
+	t = LogoutType
 	p' in LoginPage
 	c' = none
 	Logout[ss,ss',c]
 }
 
-pred CreateRepoPageNNLink[ss,ss':StateOfServer, p,p':Page, c,c':lone Cookie] {
+pred CreateRepoPageNNLink[ss,ss':StateOfServer, p,p':Page, c,c':lone Cookie, t: Type] {
+	t = CreateRepoPageNNType
 	NoOp[ss,ss']
 	CreateRepoPageNNOK[ss',p']
 	p in MyReposPage + LoggedInMainPage
@@ -277,7 +280,8 @@ pred CreateRepoPageNNLink[ss,ss':StateOfServer, p,p':Page, c,c':lone Cookie] {
 	c = c'
 }
 
-pred CreateRepoPageNameLink[ss,ss':StateOfServer, p,p':Page, c,c':lone Cookie] {
+pred CreateRepoPageNameLink[ss,ss':StateOfServer, p,p':Page, c,c':lone Cookie, t: Type] {
+	t = CreateRepoPageNameType
 	NoOp[ss,ss']
 	CreateRepoPageINOK[ss',p'] or CreateRepoPageVNOK[ss',p']
 	p in CreateRepoPage
@@ -286,7 +290,8 @@ pred CreateRepoPageNameLink[ss,ss':StateOfServer, p,p':Page, c,c':lone Cookie] {
 }
 
 //goes to repo page and creates a new repo
-pred CreateRepoSuccessLink[ss,ss':StateOfServer, p,p':Page, c,c':lone Cookie] {
+pred CreateRepoSuccessLink[ss,ss':StateOfServer, p,p':Page, c,c':lone Cookie, t: Type] {
+	t = CreateRepoSuccessType
 	some r:Repo {
 		let u = ss.Identification[c] {
 			CreateRepo[ss,ss',u,r]
@@ -297,21 +302,24 @@ pred CreateRepoSuccessLink[ss,ss':StateOfServer, p,p':Page, c,c':lone Cookie] {
 	c = c'
 }
 
-pred LoggedInMainPageLink[ss,ss':StateOfServer, p':Page, c,c':lone Cookie] {
+pred LoggedInMainPageLink[ss,ss':StateOfServer, p':Page, c,c':lone Cookie, t: Type] {
+	t = LoggedInMainPageType
 	LoggedInMainPageOK[ss',p']
 	NoOp[ss,ss']
 	ss.Identification[c] != none
 	c = c'
 }
 
-pred MyReposPageLink[ss,ss':StateOfServer, p':Page, c,c':lone Cookie] {
+pred MyReposPageLink[ss,ss':StateOfServer, p':Page, c,c':lone Cookie, t: Type] {
+	t = MyReposPageType
 	NoOp[ss,ss']
 	c=c'
 	MyReposPageOK[ss',p',c]
 	ss.Identification[c] != none
 }
 
-pred RepoPageLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':lone Cookie] {
+pred RepoPageLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':lone Cookie, t: Type] {
+	t = RepoPageType
 	NoOp[ss,ss']
 	let u = ss.Identification[c] {
 		p in LoggedInMainPage or (p in MyReposPage and r in p.myRepos)
@@ -326,7 +334,8 @@ pred RepoPageLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':lone Cookie] {
 	c = c'
 }
 
-pred CollaboratorLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':lone Cookie] {
+pred CollaboratorLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':lone Cookie, t: Type] {
+	t = CollaboratorType
 	NoOp[ss,ss']
 	p in RepoOwnerPage
 	p.repo = r
@@ -336,7 +345,8 @@ pred CollaboratorLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':lone Cookie]
 	ss.Identification[c] in ss.Ownership[r]
 }
 
-pred AddCollaboratorLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':lone Cookie] {
+pred AddCollaboratorLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':lone Cookie, t: Type] {
+	t = AddCollaboratorType
 	p in CollaboratorPage
 	p.cRepo = r
 	CollaboratorPageOK[ss',p',r]
@@ -347,7 +357,8 @@ pred AddCollaboratorLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':lone Cook
 	}
 }
 
-pred RemoveCollaboratorLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':lone Cookie] {
+pred RemoveCollaboratorLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':lone Cookie, t: Type] {
+	t = RemoveCollaboratorType
 	p in CollaboratorPage
 	p.cRepo = r
 	CollaboratorPageOK[ss',p',r]
@@ -357,7 +368,8 @@ pred RemoveCollaboratorLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':lone C
 	}
 }
 
-pred DeleteRepoLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':lone Cookie] {
+pred DeleteRepoLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':lone Cookie, t: Type] {
+	t = DeleteRepoType
 	p in RepoOwnerPage
 	p.repo = r
 	MyReposPageOK[ss',p',c]
@@ -365,13 +377,13 @@ pred DeleteRepoLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':lone Cookie] {
 	DeleteRepo[ss,ss',ss.Identification[c],r]
 }
 
-pred StateTransition[s,s':State] {
-	some p:s.browser.pages,p':s'.browser.pages, b:s.browser.browsers {
-		ServerRequest[s,s',p,p',b]
+pred StateTransition[s,s':State, b:s.browser.browsers, t:Type] {
+	some p:s.browser.pages,p':s'.browser.pages {
+		ServerRequest[s,s',p,p',b,t]
 	}
 }
 
-pred ServerRequest[s,s':State,p,p':Page,b:Browser] {
+pred ServerRequest[s,s':State,p,p':Page,b:Browser,t:Type] {
 	s.browser.browsers = s'.browser.browsers
 	s.browser.CurrentBrowserPages - (b->p) + (b->p') = s'.browser.CurrentBrowserPages
 	p in s.browser.CurrentBrowserPages[b]
@@ -379,33 +391,39 @@ pred ServerRequest[s,s':State,p,p':Page,b:Browser] {
 	let c = s.browser.CurrentBrowserCookie[b],
 			c' = s'.browser.CurrentBrowserCookie[b] {
 		s.browser.CurrentBrowserCookie - (b -> c) + (b -> c') = s'.browser.CurrentBrowserCookie
-		LoggedInMainPageLink[s.server, s'.server, p', c, c'] or 
-		CreateRepoSuccessLink[s.server, s'.server, p, p', c, c'] or
-		CreateRepoPageNNLink[s.server, s'.server, p, p', c, c'] or
-		MyReposPageLink[s.server, s'.server, p',c,c'] or
-		CreateRepoPageNameLink[s.server, s'.server, p, p', c, c'] or
-		LoginLink[s.server, s'.server, p,p',c,c'] or
-		LogoutLink[s.server, s'.server, p', c,c'] or
+		LoggedInMainPageLink[s.server, s'.server, p', c, c', t] or 
+		CreateRepoSuccessLink[s.server, s'.server, p, p', c, c', t] or
+		CreateRepoPageNNLink[s.server, s'.server, p, p', c, c', t] or
+		MyReposPageLink[s.server, s'.server, p',c,c', t] or
+		CreateRepoPageNameLink[s.server, s'.server, p, p', c, c', t] or
+		LoginLink[s.server, s'.server, p,p',c,c', t] or
+		LogoutLink[s.server, s'.server, p', c,c', t] or
 		(some r:Repo {
-			RepoPageLink[s.server, s'.server, p, p', r, c, c'] or
-			CollaboratorLink[s.server, s'.server, p, p', r, c, c'] or
-			AddCollaboratorLink[s.server, s'.server, p, p', r, c, c'] or
-			RemoveCollaboratorLink[s.server, s'.server, p, p', r, c, c'] or
-			DeleteRepoLink[s.server, s'.server, p,p', r, c, c']
+			RepoPageLink[s.server, s'.server, p, p', r, c, c', t] or
+			CollaboratorLink[s.server, s'.server, p, p', r, c, c', t] or
+			AddCollaboratorLink[s.server, s'.server, p, p', r, c, c', t] or
+			RemoveCollaboratorLink[s.server, s'.server, p, p', r, c, c', t] or
+			DeleteRepoLink[s.server, s'.server, p,p', r, c, c', t]
 		})
 	}
 }
 
+abstract sig Type { } 
+one sig LoggedInMainPageType, CreateRepoSuccessType, CreateRepoPageNNType,
+		MyReposPageType, CreateRepoPageNameType, LoginType, LogoutType, 
+		RepoPageType, CollaboratorType, AddCollaboratorType, RemoveCollaboratorType, 
+		DeleteRepoType extends Type { }
+
 sig State {
 	browser: one StateOfBrowsers,
 	server: one StateOfServer,
-	nextState: set State }
+	nextState: State -> Browser -> Type }
 
 fact {
 	all s,s':State|s.browser = s'.browser and s.server = s'.server implies s=s'
-	all s,s':State {
-		s' in s.nextState iff StateTransition[s,s']
-		s in s'.*nextState or s' in s.*nextState
+	all s,s':State, b: Browser, t: Type {
+		s->s'->b->t in nextState iff StateTransition[s,s',b,t]
+		s in s'.*(nextState.Type.Browser) or s' in s.*(nextState.Type.Browser)
 	}
 	all sb:StateOfBrowsers | some s:State | sb = s.browser
 	all ss:StateOfServer | some s:State | ss = s.server
@@ -432,11 +450,11 @@ pred Combo {
 		RemoveCollaboratorLink[s.server,s'.server,p,p',r,c,c']
 		StateTransition[s,s']
 	}*/
-	some s,s':State, p,p':Page, r:Repo, c,c':Cookie {
+	some s,s':State, p,p':Page, r:Repo, c,c':Cookie, b: Browser, t:Type {
 		p in s.browser.pages
 		p' in s'.browser.pages
-		DeleteRepoLink[s.server,s'.server,p,p',r,c,c']
-		StateTransition[s,s']
+		DeleteRepoLink[s.server,s'.server,p,p',r,c,c', t]
+		StateTransition[s,s', b, t]
 	}
 	/*some s,s':State, p:Page, p':RepoPage, r:Repo, c,c':Cookie {
 		p in s.browser.pages
