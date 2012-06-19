@@ -49,52 +49,34 @@
 (defn object-type [o]
   (second (re-find #"(.*)\$" o)))
 
-(def difficulties
-     {["LoggedInMainPage" "MyReposPage"] 1
-      ["LoggedInMainPage" "RepoMemberPage"] 8})
+(def difficulty?
+     {"LoggedInMainPageType" 1
+      "CreateRepoSuccessType" 2
+      "CreateRepoPageNNType" 2
+      "MyReposPageType" 1
+      "CreateRepoPageNameType" 5
+      "LoginType" 6
+      "LogoutType" 2
+      "ClickRepoPageType" 2
+      "SearchRepoPageType" 4
+      "CollaboratorType" 3
+      "AddCollaboratorType" 5
+      "RemoveCollaboratorType" 3
+      "DeleteRepoType" 10})
 
-#_ (def difficulty?
-        {"LoggedInMainPageType" 1})
-
-#_
-(defn difficulty? [p1 p2]
-  (let [t1 (object-type p1)
-        t2 (object-type p2)]
-    (case t1
-      "LoggedInMainPage" ({"LoginPage" 4} t1 1)
-      "MyReposPage" ({"RepoOwnerPage" 8} t1 1)
-      "CreateRepoPageNN" 2
-      "CreateRepoPageIN" 4
-      "CreateRepoPageVN" 3
-      "LoginPage" 2
-      "RepoOwnerPage" 3
-      "RepoMemberPage" 3
-      "CollaboratorPage" ({"CollaboratorPage" 6} t1 3)))
-
-(def discoverabilities
-     #{["LoggedInMainPage" "MyReposPage"]
-       ["MyReposPage" "RepoMemberPage"]
-       ["MyReposPage" "RepoOwnerPage"]
-       })
-
-(defn discoverable? [p1 p2]
-  (let [t1 (object-type p1)
-        t2 (object-type p2)]
-    (not (not
-          (case t2
-                "LoggedInMainPage" true
-                "LoginPage" true
-                "CreateRepoPageNN" true #_ (#{"MyReposPage" "LoggedInMainPage"} t1)
-                "CreateRepoPageIN" true #_ (#{"CreateRepoPageNN" "CreateRepoPageIN" "CreateRepoPageVN"} t1)
-                "CreateRepoPageVN" true #_ (#{"CreateRepoPageNN" "CreateRepoPageIN" "CreateRepoPageVN"} t1)
-                "MyReposPage" true
-                "RepoMemberPage" (#{"MyReposPage"} t1)
-                "RepoOwnerPage" (#{"MyReposPage" "CreateRepoVN"} t1)
-                "CollaboratorPage" true #_ (#{"RepoOwnerPage" "CollaboratorPage"} t1)
-                false))))
-  #_ (not (not
-           (discoverabilities [(object-type p1)
-                               (object-type p2)]))))
+(def discoverable?
+     #{"LoggedInMainPageType"
+       "CreateRepoSuccessType"
+       "CreateRepoPageNNType"
+       "MyReposPageType"
+       "CreateRepoPageNameType"
+       "LoginType"
+       "LogoutType"
+       "ClickRepoPageType"
+       "CollaboratorType"
+       "AddCollaboratorType"
+       "RemoveCollaboratorType"
+       "DeleteRepoType"})
 
 (defn nextStates [tuples state]
   (for [[state1 state2 browser type] (:nextState (tuples :all))
