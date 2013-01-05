@@ -425,90 +425,91 @@ fact {
 		s in s'.*(nextState.Type.Browser) or s' in s.*(nextState.Type.Browser)
 	}
 	all sb:StateOfBrowsers | some s:State | sb = s.browser
-	all ss:StateOfServer | some s:State | ss = s.server
+//	all ss:StateOfServer | some s:State | ss = s.server
 	all s:State | s.server.cookies = s.browser.cookies
 }
 
 pred Combo {
 	//some p,p':Password | p != p'
-	/*some s,s':State, p,p':Page, r:Repo, c,c':Cookie {
-		p in s.browser.pages
-		p' in s'.browser.pages
-		CollaboratorLink[s.server,s'.server,p,p',r,c,c']
-		StateTransition[s,s']
-	}
-	some s,s':State, p,p':Page, r:Repo, c,c':Cookie {
-		p in s.browser.pages
-		p' in s'.browser.pages
-		AddCollaboratorLink[s.server,s'.server,p,p',r,c,c']
-		StateTransition[s,s']
-	}
-	some s,s':State, p,p':Page, r:Repo, c,c':Cookie {
-		p in s.browser.pages
-		p' in s'.browser.pages
-		RemoveCollaboratorLink[s.server,s'.server,p,p',r,c,c']
-		StateTransition[s,s']
-	}*/
+//	some s,s':State, p,p':Page, r:Repo, c,c':Cookie, b: Browser, t: Type {
+//		p in s.browser.pages
+//		p' in s'.browser.pages
+//		CollaboratorLink[s.server,s'.server,p,p',r,c,c',t]
+//		StateTransition[s,s', b, t]
+//	}
+//	some s,s':State, p,p':Page, r:Repo, c,c':Cookie, b: Browser, t: Type {
+//		p in s.browser.pages
+//		p' in s'.browser.pages
+//		AddCollaboratorLink[s.server,s'.server,p,p',r,c,c',t]
+//		StateTransition[s,s', b, t]
+//	}
+//	some s,s':State, p,p':Page, r:Repo, c,c':Cookie, b: Browser, t: Type {
+//		p in s.browser.pages
+//		p' in s'.browser.pages
+//		RemoveCollaboratorLink[s.server,s'.server,p,p',r,c,c', t]
+//		StateTransition[s,s', b, t]
+//	}
 	some s,s':State, p,p':Page, r:Repo, c,c':Cookie, b: Browser, t:Type {
 		p in s.browser.pages
 		p' in s'.browser.pages
 		DeleteRepoLink[s.server,s'.server,p,p',r,c,c', t]
 		StateTransition[s,s', b, t]
 	}
-	/*some s,s':State, p:Page, p':RepoPage, r:Repo, c,c':Cookie {
-		p in s.browser.pages
-		p' in s'.browser.pages
-		RepoPageLink[s.server,s'.server,p,p',r,c,c']
-		StateTransition[s,s']
-	}*/
-	/*some s,s':State, p,p':Page, c,c':Cookie {
-		p in s.browser.pages
-		p' in s'.browser.pages
-		some b:Browser {
-			ServerRequest[s, s', p, p', b]
-		}
-		MyReposPageLink[s.server,s'.server,p',c,c']
-		StateTransition[s,s']
-	}*/
+//	some s,s':State, p:Page, p':RepoPage, r:Repo, c,c':Cookie, b: Browser, t: Type {
+//		p in s.browser.pages
+//		p' in s'.browser.pages
+//		RepoPageLink[s.server,s'.server,p,p',r,c,c', t]
+//		StateTransition[s,s', b, t]
+//	}
 
-	/*some s,s':State, p:Page, p':Page, c,c':Cookie {
-		p in s.browser.pages
-		p' in s'.browser.pages
-		some b:Browser {
-			ServerRequest[s, s', p, p', b]
-		}
-		LoginLink[s.server,s'.server,p,p',c,c']
-		StateTransition[s,s']
-	}*/
-	/*some s,s':State, p,p':Page, c:Cookie,c':lone Cookie {
-		p in s.browser.pages
-		p' in s'.browser.pages
-		some b:Browser {
-			ServerRequest[s, s', p, p', b]
-		}
-		LogoutLink[s.server,s'.server,p',c,c']
-		StateTransition[s,s']
-	}*/
+//	some s,s':State, p,p':Page, c,c':Cookie, b: Browser, t: Type {
+//		p in s.browser.pages
+//		p' in s'.browser.pages
+//		some b:Browser {
+//			ServerRequest[s, s', p, p', b, t]
+//		}
+//		MyReposPageLink[s.server,s'.server,p',c,c', t]
+//		StateTransition[s,s', b, t]
+//	}
 
-/*
-	some s,s':State, p,p':Page, c,c':Cookie {
+//	some s,s':State, p:Page, p':Page, c,c':Cookie, b: Browser, t: Type {
+//		p in s.browser.pages
+//		p' in s'.browser.pages
+//		some b:Browser {
+//			ServerRequest[s, s', p, p', b, t]
+//		}
+//		LoginLink[s.server,s'.server,p,p',c,c', t]
+//		StateTransition[s,s', b, t]
+//	}
+
+//	some s,s':State, p,p':Page, c:Cookie,c':lone Cookie, b: Browser, t: Type {
+//		p in s.browser.pages
+//		p' in s'.browser.pages
+//		some b:Browser {
+//			ServerRequest[s, s', p, p', b, t]
+//		}
+//		LogoutLink[s.server,s'.server,p',c,c', t]
+//		StateTransition[s,s', b, t]
+//	}
+
+//	some s,s':State, p,p':Page, c,c':Cookie, b: Browser, t: Type {
+//		p in s.browser.pages
+//		p' in s'.browser.pages
+//		CreateRepoSuccessLink[s.server,s'.server,p,p',c,c', t]
+//		StateTransition[s,s', b, t]
+//	}
+//	some s,s':State, p,p':Page, c,c':Cookie, b: Browser, t: Type {
+//		p in s.browser.pages
+//		p' in s'.browser.pages
+//		CreateRepoPageNNLink[s.server,s'.server,p,p',c,c', t]
+//		StateTransition[s,s', b, t]
+//	}
+	some s,s':State, p,p':Page, c,c':Cookie, b: Browser, t: Type {
 		p in s.browser.pages
 		p' in s'.browser.pages
-		CreateRepoSuccessLink[s.server,s'.server,p,p',c,c']
-		StateTransition[s,s']
+		CreateRepoPageNameLink[s.server,s'.server,p,p',c,c', t]
+		StateTransition[s,s', b, t]
 	}
-	some s,s':State, p,p':Page, c,c':Cookie {
-		p in s.browser.pages
-		p' in s'.browser.pages
-		CreateRepoPageNNLink[s.server,s'.server,p,p',c,c']
-		StateTransition[s,s']
-	}
-	some s,s':State, p,p':Page, c,c':Cookie {
-		p in s.browser.pages
-		p' in s'.browser.pages
-		CreateRepoPageNameLink[s.server,s'.server,p,p',c,c']
-		StateTransition[s,s']
-	}*/
 	//some s:StateOfServer, p:Page | CreateRepoPageINOK[s,p]
 }
 
