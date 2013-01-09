@@ -106,6 +106,16 @@ pred GrantAccess[s,s':StateOfServer, o,u:UserAccount, r:Repo] {
 	s.cookies = s'.cookies
 }
 
+pred GrantBrokenAccess[s,s':StateOfServer, o,u:UserAccount, r:Repo] {
+	s.Identification = s'.Identification
+	s.Authentication = s'.Authentication
+	s.Ownership = s'.Ownership
+	o in s.Membership[r]
+	s'.Membership = s.Membership + (r -> u)
+	!(u in s.Membership[r])
+	s.cookies = s'.cookies
+}
+
 pred RevokeAccess[s,s':StateOfServer, o,u:UserAccount, r:Repo] {
 	s.Identification = s'.Identification
 	s.Authentication = s'.Authentication
@@ -141,7 +151,7 @@ sig StateOfBrowsers {
 	browsers: set Browser,
 	pages: set Page,
 	cookies: set Cookie,
-	
+
 	CurrentBrowserPages: browsers -> set pages,
 	CurrentBrowserCookie: browsers -> lone cookies,
 	//DifficultyAssignment: Page -> Page -> one Int,
@@ -356,6 +366,18 @@ pred AddCollaboratorLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':lone Cook
 	}
 }
 
+pred AddCollaboratorBrokenLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':lone Cookie, t: Type] {
+	t = AddCollaboratorBrokenType
+	p in CollaboratorPage
+	p.cRepo = r
+	CollaboratorPageOK[ss',p',r]
+	c = c'
+	some u:UserAccount {
+		!(u in ss.Membership[r])
+		GrantBrokenAccess[ss,ss',ss.Identification[c],u,r]
+	}
+}
+
 pred RemoveCollaboratorLink[ss,ss':StateOfServer, p,p':Page, r:Repo, c,c':lone Cookie, t: Type] {
 	t = RemoveCollaboratorType
 	p in CollaboratorPage
@@ -401,6 +423,7 @@ pred ServerRequest[s,s':State,p,p':Page,b:Browser,t:Type] {
 			RepoPageLink[s.server, s'.server, p, p', r, c, c', t] or
 			CollaboratorLink[s.server, s'.server, p, p', r, c, c', t] or
 			AddCollaboratorLink[s.server, s'.server, p, p', r, c, c', t] or
+			AddCollaboratorBrokenLink[s.server, s'.server, p, p', r, c, c', t] or
 			RemoveCollaboratorLink[s.server, s'.server, p, p', r, c, c', t] or
 			DeleteRepoLink[s.server, s'.server, p,p', r, c, c', t]
 		})
@@ -411,7 +434,7 @@ abstract sig Type { }
 one sig LoggedInMainPageType, CreateRepoSuccessType, CreateRepoPageNNType,
 		MyReposPageType, CreateRepoPageNameType, LoginType, LogoutType, 
 		ClickRepoPageType, SearchRepoPageType, CollaboratorType, AddCollaboratorType,
-		RemoveCollaboratorType, DeleteRepoType extends Type { }
+		RemoveCollaboratorType, DeleteRepoType, AddCollaboratorBrokenType extends Type { }
 
 sig State {
 	browser: one StateOfBrowsers,
@@ -429,6 +452,24 @@ fact {
 	all s:State | s.server.cookies = s.browser.cookies
 }
 
+pred gainAccess{
+	some s, s', s'': State, p,p':Page, r: Repo, c1,c2: Cookie, b: Browser, t: Type {
+	p in s.browser.CurrentBrowserPages[b]
+	!(p' in s.browser.CurrentBrowserPages[b])
+	let u1 = s.server.Identification[c1], u2 = s.server.Identification[c2] {
+		!(u1 in s.server.Membership[r]) and 
+		!(u2 in s.server.Membership[r]) and 
+		!(u2 in s'.server.Membership[r]) and
+		u1 in s'.server.Membership[r] and 
+		u1 in s''.server.Membership[r] and
+		u2 in s''.server.Membership[r]
+		}
+	StateTransition[s,s', b, t]
+	StateTransition[s',s'', b, t]
+	!(AddCollaboratorLink[s'.server, s''.server, p, p', r, c1, c2, t])
+	}
+}
+
 pred Combo {
 	//some p,p':Password | p != p'
 //	some s,s':State, p,p':Page, r:Repo, c,c':Cookie, b: Browser, t: Type {
@@ -437,24 +478,24 @@ pred Combo {
 //		CollaboratorLink[s.server,s'.server,p,p',r,c,c',t]
 //		StateTransition[s,s', b, t]
 //	}
-//	some s,s':State, p,p':Page, r:Repo, c,c':Cookie, b: Browser, t: Type {
-//		p in s.browser.pages
-//		p' in s'.browser.pages
-//		AddCollaboratorLink[s.server,s'.server,p,p',r,c,c',t]
-//		StateTransition[s,s', b, t]
-//	}
+	some s,s':State, p,p':Page, r:Repo, c,c':Cookie, b: Browser, t: Type {
+		p in s.browser.pages
+		p' in s'.browser.pages
+		AddCollaboratorLink[s.server,s'.server,p,p',r,c,c',t]
+		StateTransition[s,s', b, t]
+	}
 //	some s,s':State, p,p':Page, r:Repo, c,c':Cookie, b: Browser, t: Type {
 //		p in s.browser.pages
 //		p' in s'.browser.pages
 //		RemoveCollaboratorLink[s.server,s'.server,p,p',r,c,c', t]
 //		StateTransition[s,s', b, t]
 //	}
-	some s,s':State, p,p':Page, r:Repo, c,c':Cookie, b: Browser, t:Type {
-		p in s.browser.pages
-		p' in s'.browser.pages
-		DeleteRepoLink[s.server,s'.server,p,p',r,c,c', t]
-		StateTransition[s,s', b, t]
-	}
+//	some s,s':State, p,p':Page, r:Repo, c,c':Cookie, b: Browser, t:Type {
+//		p in s.browser.pages
+//		p' in s'.browser.pages
+//		DeleteRepoLink[s.server,s'.server,p,p',r,c,c', t]
+//		StateTransition[s,s', b, t]
+//	}
 //	some s,s':State, p:Page, p':RepoPage, r:Repo, c,c':Cookie, b: Browser, t: Type {
 //		p in s.browser.pages
 //		p' in s'.browser.pages
@@ -504,16 +545,17 @@ pred Combo {
 //		CreateRepoPageNNLink[s.server,s'.server,p,p',c,c', t]
 //		StateTransition[s,s', b, t]
 //	}
-	some s,s':State, p,p':Page, c,c':Cookie, b: Browser, t: Type {
-		p in s.browser.pages
-		p' in s'.browser.pages
-		CreateRepoPageNameLink[s.server,s'.server,p,p',c,c', t]
-		StateTransition[s,s', b, t]
-	}
+//	some s,s':State, p,p':Page, c,c':Cookie, b: Browser, t: Type {
+//		p in s.browser.pages
+//		p' in s'.browser.pages
+//		CreateRepoPageNameLink[s.server,s'.server,p,p',c,c', t]
+//		StateTransition[s,s', b, t]
+//	}
 	//some s:StateOfServer, p:Page | CreateRepoPageINOK[s,p]
 }
 
-run Combo for 5
+run gainAccess for 3
+
 
 //run GrantAccess for 3 but 0 StateOfBrowsers, 0 Browser, 0 State, 0 Page //0 UserAction
 //run { #DifficultyAssignment=2}
